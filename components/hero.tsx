@@ -85,61 +85,68 @@ export default function Hero({ lang }: { lang: string }) {
       <div className="absolute bottom-40 right-32 w-24 h-24 bg-blue-500/10 backdrop-blur-sm rounded-full border border-blue-500/20 z-10" /> */}
 
       {/* Content */}
-      <div className="relative z-20 h-full container mx-auto px-4 flex flex-col justify-center items-start">
-        <div className={`max-w-3xl ${dir === "rtl" ? "mr-auto" : "ml-0 md:ml-12"}`}>
-          {/* Animated Badge */}
-          <div className="inline-flex items-center px-4 py-2 mb-6 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white/90 text-sm font-medium">
-            <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse" />
-            Premium Scooter & Motorbike Rental
-          </div>
+// Content
+<div className="relative z-20 h-full container mx-auto px-4 flex flex-col justify-center items-start">
+  <div className={`max-w-3xl ${dir === "rtl" ? "mr-auto" : "ml-0 md:ml-12"}`}>
+    {/* Animated Badge */}
+    <div className="inline-flex items-center px-4 py-2 mb-6 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white/90 text-sm font-medium">
+      <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse" />
+      Premium Scooter & Motorbike Rental
+    </div>
 
-          {/* Main Title with Gradient */}
-          <h1 className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/80 mb-6 leading-tight tracking-tight">
-            {t.heroTitle}
-          </h1>
+    {/* Main Title with Gradient */}
+    <h1 className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/80 mb-6 leading-tight tracking-tight">
+      {t.heroTitle}
+    </h1>
 
-          {/* Subtitle with Better Typography */}
-          <p className="text-xl md:text-2xl text-white/90 mb-8 font-light leading-relaxed max-w-2xl">
-            {t.heroSubtitle}
-          </p>
+    {/* Subtitle with Better Typography */}
+    <p className="text-xl md:text-2xl text-white/90 mb-8 font-light leading-relaxed max-w-2xl">
+      {t.heroSubtitle}
+    </p>
 
-          {/* Modern Button Group */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-8">
-            <Button 
-              size="lg" 
-              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-8 py-4 rounded-full shadow-2xl shadow-orange-500/25 transition-all duration-300 hover:scale-105 hover:shadow-orange-500/40"
-            >
-              {t.rentNow}
-              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className={`${learnMoreTextColor} border-2 border-white/30 hover:bg-white/10 backdrop-blur-sm px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:border-white/50`}
-            >
-              {t.learnMore}
-            </Button>
-          </div>
+    {/* Modern Button Group */}
+    <div className="flex flex-col sm:flex-row gap-4 mb-8">
+      <Button
+        size="lg"
+        className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-8 py-4 rounded-full shadow-2xl shadow-orange-500/25 transition-all duration-300 hover:scale-105 hover:shadow-orange-500/40"
+      >
+        {t.rentNow}
+        <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+      </Button>
+      <Button
+        size="lg"
+        variant="outline"
+        className={`${learnMoreTextColor} border-2 border-white/30 hover:bg-white/10 backdrop-blur-sm px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:border-white/50`}
+      >
+        {t.learnMore}
+      </Button>
+    </div>
 
-          {/* Feature Highlights */}
-          <div className="flex flex-wrap gap-6 text-white/80 text-sm">
-            <div className="flex items-center">
-              <div className="w-3 h-3 bg-green-400 rounded-full mr-2" />
-              24/7 Support
-            </div>
-            <div className="flex items-center">
-              <div className="w-3 h-3 bg-blue-400 rounded-full mr-2" />
-              Free Cancellation
-            </div>
-            <div className="flex items-center">
-              <div className="w-3 h-3 bg-purple-400 rounded-full mr-2" />
-              Best Price Guarantee
-            </div>
-          </div>
-        </div>
+    {/* Phone Number - Big, Red, Bold */}
+    <div className="text-5xl font-bold text-yellow-400 mb-4">
+      068 775 468
+    </div>
+
+    {/* Feature Highlights */}
+    <div className="flex flex-wrap gap-6 text-white/80 text-sm">
+      <div className="flex items-center">
+        <div className="w-3 h-3 bg-green-400 rounded-full mr-2" />
+        24/7 Support
       </div>
+      <div className="flex items-center">
+        <div className="w-3 h-3 bg-blue-400 rounded-full mr-2" />
+        Free Cancellation
+      </div>
+      <div className="flex items-center">
+        <div className="w-3 h-3 bg-purple-400 rounded-full mr-2" />
+        Best Price Guarantee
+      </div>
+    </div>
+  </div>
+</div>
+
 
       {/* Slide Indicators */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex space-x-3">

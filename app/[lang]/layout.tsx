@@ -1,0 +1,187 @@
+import { Metadata } from 'next'
+import Script from 'next/script'
+
+// Define your supported languages
+export const languages = ['en', 'ru', 'he', 'sr'] as const
+export type Language = typeof languages[number]
+
+// SEO content for each language
+const seoContent = {
+  en: {
+    title: "Tivat Scooter Rental | Premium Scooter Hire in Boka Bay Montenegro",
+    description: "Rent premium scooters in Tivat, Montenegro. Explore Boka Bay with our reliable, affordable scooter rentals. Book online for instant confirmation. Free helmets included.",
+    keywords: "tivat scooter rental, montenegro scooter hire, boka bay scooter, tivat rent scooter, motorcycle rental tivat, vespa rental montenegro",
+    locale: "en_US"
+  },
+  ru: {
+    title: "Аренда скутеров в Тивате | Прокат скутеров в Боко-Которском заливе, Черногория",
+    description: "Арендуйте премиальные скутеры в Тивате, Черногория. Исследуйте Боко-Которский залив с нашими надежными и доступными скутерами. Бронируйте онлайн с мгновенным подтверждением.",
+    keywords: "аренда скутеров тиват, прокат скутеров черногория, боко которский залив скутер, мотоцикл аренда тиват, веспа прокат черногория",
+    locale: "ru_RU"
+  },
+  he: {
+    title: "השכרת קטנועים בטיבט | השכרת קטנועים פרימיום במפרץ בוקה, מונטנגרו",
+    description: "השכירו קטנועים פרימיום בטיבט, מונטנגרו. חקרו את מפרץ בוקה עם השכרת הקטנועים האמינה והזולה שלנו. הזמינו באינטרנט לאישור מיידי.",
+    keywords: "השכרת קטנועים טיבט, השכרת קטנועים מונטנגרו, מפרץ בוקה קטנוע, השכרת אופנוע טיבט, השכרת וספה מונטנגרו",
+    locale: "he_IL"
+  },
+  sr: {
+    title: "Iznajmljivanje skutera u Tivtu | Premium skuter rental u Boka Bay, Crna Gora",
+    description: "Iznajmite premium skutere u Tivtu, Crna Gora. Istražite Bokokotorski zaliv sa našim pouzdanim i pristupačnim skuter rentalima. Rezervišite online za trenutnu potvrdu.",
+    keywords: "tivat skuter rental, crna gora skuter iznajmljivanje, boka bay skuter, tivat rent skuter, motocikl rental tivat, vespa rental crna gora",
+    locale: "sr_RS"
+  }
+}
+
+interface LayoutProps {
+  children: React.ReactNode
+  params: { lang: Language }
+}
+
+export async function generateMetadata({ params }: { params: { lang: Language } }): Promise<Metadata> {
+  const lang = params.lang || 'en'
+  const content = seoContent[lang] || seoContent.en
+  
+  return {
+    title: content.title,
+    description: content.description,
+    keywords: content.keywords,
+    authors: [{ name: 'Tivat Rent Scooter' }],
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+    openGraph: {
+      type: 'website',
+      locale: content.locale,
+      url: `https://www.tivat-rent-scooter.com/${lang}`,
+      title: content.title,
+      description: content.description,
+      siteName: 'Tivat Rent Scooter',
+      images: [
+        {
+          url: 'https://www.tivat-rent-scooter.com/images/og-tivat-scooter-rental.jpg',
+          width: 1200,
+          height: 630,
+          alt: content.description,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: content.title,
+      description: content.description,
+      images: ['https://www.tivat-rent-scooter.com/images/twitter-tivat-scooter-rental.jpg'],
+      creator: '@TivatRentScooter',
+    },
+    alternates: {
+      canonical: `https://www.tivat-rent-scooter.com/${lang}`,
+      languages: {
+        'en': 'https://www.tivat-rent-scooter.com/en',
+        'ru': 'https://www.tivat-rent-scooter.com/ru',
+        'he': 'https://www.tivat-rent-scooter.com/he',
+        'sr': 'https://www.tivat-rent-scooter.com/sr',
+        'x-default': 'https://www.tivat-rent-scooter.com/en',
+      },
+    },
+    verification: {
+      google: 'your-google-verification-code',
+      yandex: 'your-yandex-verification-code',
+    },
+  }
+}
+
+export default function LangLayout({ children, params }: LayoutProps) {
+  const lang = params.lang || 'en'
+  const content = seoContent[lang] || seoContent.en
+  
+  // Structured data for the current language
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Tivat Rent Scooter",
+    "image": [
+      "https://www.tivat-rent-scooter.com/images/scooter-rental-1.jpg",
+      "https://www.tivat-rent-scooter.com/images/scooter-rental-2.jpg"
+    ],
+    "description": content.description,
+    "url": `https://www.tivat-rent-scooter.com/${lang}`,
+    "telephone": "+382-XX-XXX-XXX",
+    "email": "info@tivat-rent-scooter.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Your Street Address",
+      "addressLocality": "Tivat",
+      "addressRegion": "Boka Bay",
+      "postalCode": "85320",
+      "addressCountry": "ME"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 42.4370,
+      "longitude": 18.6969
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "08:00",
+        "closes": "20:00"
+      }
+    ],
+    "priceRange": "€€",
+    "areaServed": [
+      { "@type": "Place", "name": "Tivat, Montenegro" },
+      { "@type": "Place", "name": "Boka Bay, Montenegro" },
+      { "@type": "Place", "name": "Kotor, Montenegro" }
+    ]
+  }
+  
+  return (
+    <div lang={lang} dir={lang === 'he' ? 'rtl' : 'ltr'}>
+      {/* Structured Data Script */}
+      <Script
+        id="structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData)
+        }}
+      />
+      
+      {/* Language-specific analytics for Russian market */}
+      {lang === 'ru' && (
+        <Script
+          id="yandex-metrika"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+              m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+              (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+              ym(XXXXXXXX, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true });
+            `
+          }}
+        />
+      )}
+      
+      {/* Main content */}
+      {children}
+      
+      {/* Language-specific noscript tags */}
+      {lang === 'ru' && (
+        <noscript>
+          <div>
+            <img src="https://mc.yandex.ru/watch/XXXXXXXX" style={{position:'absolute', left:'-9999px'}} alt="" />
+          </div>
+        </noscript>
+      )}
+    </div>
+  )
+}
