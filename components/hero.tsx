@@ -139,10 +139,10 @@ export default function Hero({ lang }: { lang: string }) {
         <div className="w-3 h-3 bg-blue-400 rounded-full mr-2" />
         Free Cancellation
       </div>
-      <div className="flex items-center">
+      {/* <div className="flex items-center">
         <div className="w-3 h-3 bg-purple-400 rounded-full mr-2" />
         Best Price Guarantee
-      </div>
+      </div> */}
     </div>
   </div>
 </div>

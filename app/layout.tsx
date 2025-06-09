@@ -1,13 +1,13 @@
-import type React from "react"
-import "./globals.css"
-import { Inter } from "next/font/google"
-import { Metadata } from "next"
-import { ThemeProvider } from "@/components/theme-provider"
-import { LanguageProvider } from "@/components/language-provider"
-import Header from "@/components/header"
-import Footer from "@/components/footer"
+import type React from "react";
+import "./globals.css";
+import { Inter } from "next/font/google";
+import { Metadata } from "next";
+import { ThemeProvider } from "@/components/theme-provider";
+import { LanguageProvider } from "@/components/language-provider";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
 
-const inter = Inter({ subsets: ["latin", "cyrillic"] })
+const inter = Inter({ subsets: ["latin", "cyrillic"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.tivat-rent-scooter.com'),
@@ -44,12 +44,12 @@ export const metadata: Metadata = {
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'black-translucent',
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -59,21 +59,27 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
-        
+
+        {/* Preload the Inter font */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+          rel="stylesheet"
+        />
+
         {/* DNS Prefetch */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//www.google-analytics.com" />
         <link rel="dns-prefetch" href="//maps.googleapis.com" />
-        
+
         {/* Security Headers */}
         <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
         <meta httpEquiv="X-Frame-Options" content="SAMEORIGIN" />
         <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
         <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
-        
+
         {/* Performance Hints */}
         <link rel="preload" href="/fonts/primary-font.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        
+
         {/* Google Analytics 4 */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
         <script
@@ -86,34 +92,34 @@ export default function RootLayout({
                 page_title: 'Tivat Scooter Rental',
                 custom_map: {'custom_parameter': 'dimension1'}
               });
-            `
+            `,
           }}
         />
-        
+
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
               new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=1,j.src=
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=1;j.src=
               'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
               })(window,document,'script','dataLayer','GTM-XXXXXXX');
-            `
+            `,
           }}
         />
       </head>
       <body className={inter.className} suppressHydrationWarning>
         {/* Google Tag Manager (noscript) */}
         <noscript>
-          <iframe 
+          <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
-            height="0" 
-            width="0" 
-            style={{display:'none',visibility:'hidden'}}
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
           ></iframe>
         </noscript>
-        
+
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <LanguageProvider>
             <div className="flex min-h-screen flex-col">
@@ -125,5 +131,5 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }

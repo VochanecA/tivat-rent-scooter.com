@@ -41,7 +41,7 @@ interface LayoutProps {
 export async function generateMetadata({ params }: { params: { lang: Language } }): Promise<Metadata> {
   const lang = params.lang || 'en'
   const content = seoContent[lang] || seoContent.en
-  
+
   return {
     title: content.title,
     description: content.description,
@@ -101,7 +101,7 @@ export async function generateMetadata({ params }: { params: { lang: Language } 
 export default function LangLayout({ children, params }: LayoutProps) {
   const lang = params.lang || 'en'
   const content = seoContent[lang] || seoContent.en
-  
+
   // Structured data for the current language
   const structuredData = {
     "@context": "https://schema.org",
@@ -113,11 +113,11 @@ export default function LangLayout({ children, params }: LayoutProps) {
     ],
     "description": content.description,
     "url": `https://www.tivat-rent-scooter.com/${lang}`,
-    "telephone": "+382-XX-XXX-XXX",
+    "telephone": "+382-068-775-468",
     "email": "info@tivat-rent-scooter.com",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Your Street Address",
+      "streetAddress": "Maršala Tivat, Riva Pine, Tivat",
       "addressLocality": "Tivat",
       "addressRegion": "Boka Bay",
       "postalCode": "85320",
@@ -143,7 +143,7 @@ export default function LangLayout({ children, params }: LayoutProps) {
       { "@type": "Place", "name": "Kotor, Montenegro" }
     ]
   }
-  
+
   return (
     <div lang={lang} dir={lang === 'he' ? 'rtl' : 'ltr'}>
       {/* Structured Data Script */}
@@ -154,7 +154,7 @@ export default function LangLayout({ children, params }: LayoutProps) {
           __html: JSON.stringify(structuredData)
         }}
       />
-      
+
       {/* Language-specific analytics for Russian market */}
       {lang === 'ru' && (
         <Script
@@ -170,10 +170,10 @@ export default function LangLayout({ children, params }: LayoutProps) {
           }}
         />
       )}
-      
+
       {/* Main content */}
       {children}
-      
+
       {/* Language-specific noscript tags */}
       {lang === 'ru' && (
         <noscript>
