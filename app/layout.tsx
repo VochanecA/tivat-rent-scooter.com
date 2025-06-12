@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { LanguageProvider } from "@/components/language-provider";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({ subsets: ["latin", "cyrillic"] });
 
@@ -119,7 +120,7 @@ export default function RootLayout({
             style={{ display: 'none', visibility: 'hidden' }}
           ></iframe>
         </noscript>
-
+        <Analytics />
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <LanguageProvider>
             <div className="flex min-h-screen flex-col">
