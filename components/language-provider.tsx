@@ -1,6 +1,5 @@
 "use client"
 
-import type React from "react"
 import { createContext, useContext, useState, useEffect } from "react"
 import { usePathname, useRouter } from "next/navigation"
 
@@ -10,13 +9,15 @@ type LanguageContextType = {
   dir: "ltr" | "rtl"
 }
 
-const LanguageContext = createContext<LanguageContextType>({
-  language: "en",
-  setLanguage: () => {},
-  dir: "ltr",
-})
+const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
-export const useLanguage = () => useContext(LanguageContext)
+export function useLanguage() {
+  const context = useContext(LanguageContext)
+  if (context === undefined) {
+    throw new Error('useLanguage must be used within a LanguageProvider')
+  }
+  return context
+}
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
@@ -25,7 +26,6 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [dir, setDir] = useState<"ltr" | "rtl">("ltr")
 
   useEffect(() => {
-    // Extract language from URL path
     const pathLang = pathname.split("/")[1]
     if (pathLang && ["en", "sr", "ru", "he", "fr"].includes(pathLang)) {
       setLanguageState(pathLang)
@@ -38,11 +38,13 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const setLanguage = (lang: string) => {
     setLanguageState(lang)
     setDir(lang === "he" ? "rtl" : "ltr")
-
-    // Navigate to the same page but with different language
     const newPath = `/${lang}${pathname.substring(3) || ""}`
     router.push(newPath)
   }
 
-  return <LanguageContext.Provider value={{ language, setLanguage, dir }}>{children}</LanguageContext.Provider>
+  return (
+    <LanguageContext.Provider value={{ language, setLanguage, dir }}>
+      {children}
+    </LanguageContext.Provider>
+  )
 }

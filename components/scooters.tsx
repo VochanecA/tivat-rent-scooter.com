@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from "react"
 import Image from "next/image"
-import { Zap, Clock, Users, Gauge } from "lucide-react"
+import { Star, Shield, MapPin, Calendar } from "lucide-react"
 import { getTranslations } from "@/lib/i18n"
 
 interface ScooterData {
@@ -11,92 +11,66 @@ interface ScooterData {
   price: number
   image: string
   specs: {
-    maxSpeed: number
-    range: number
-    passengers: number
-    engine: string
+    rating: number
+    availability: string
+    bestFor: string
+    duration: string
   }
   features: string[]
 }
 
 const scootersData: ScooterData[] = [
   {
-    id: "classic-50",
-    name: "Classic 50cc",
+    id: "classic-city",
+    name: "Classic City Rider",
     price: 25,
-    image: "/scooter-classic-50.jpg?height=300&width=400",
+    image: "/scooters/scooter1.jpg",
     specs: {
-      maxSpeed: 45,
-      range: 80,
-      passengers: 1,
-      engine: "50cc"
+      rating: 4.8,
+      availability: "Available",
+      bestFor: "City tours",
+      duration: "Half/Full day"
     },
-    features: ["Perfect for city rides", "Fuel efficient", "Easy to park"]
+    features: ["Perfect for city rides", "Fuel efficient", "Easy to park", "Comfortable seat"]
   },
   {
-    id: "sport-125",
-    name: "Sport 125cc",
+    id: "sport-adventure",
+    name: "Sport Adventure",
     price: 35,
-    image: "/scooter-sport-125.jpg?height=300&width=400",
+    image: "/scooters/scooter2.jpg",
     specs: {
-      maxSpeed: 85,
-      range: 120,
-      passengers: 2,
-      engine: "125cc"
+      rating: 4.9,
+      availability: "Available",
+      bestFor: "Long trips",
+      duration: "Multi-day"
     },
-    features: ["Higher speed", "Comfortable for two", "Great for longer trips"]
+    features: ["Higher performance", "Comfortable for two", "Great for longer trips", "Storage compartment"]
   },
   {
     id: "retro-vintage",
     name: "Retro Vintage",
     price: 30,
-    image: "/scooter-retro.jpg?height=300&width=400",
+    image: "/scooters/scooter3.jpg",
     specs: {
-      maxSpeed: 60,
-      range: 100,
-      passengers: 2,
-      engine: "150cc"
+      rating: 4.7,
+      availability: "Limited",
+      bestFor: "Photo tours",
+      duration: "Half/Full day"
     },
-    features: ["Classic Italian style", "Instagram worthy", "Premium comfort"]
+    features: ["Classic Italian style", "Instagram worthy", "Premium comfort", "Vintage charm"]
   },
   {
-    id: "electric-eco",
-    name: "Electric Eco",
+    id: "eco-electric",
+    name: "Eco Electric",
     price: 40,
-    image: "/scooter-electric.jpg?height=300&width=400",
+    image: "/scooters/scooter4.jpg",
     specs: {
-      maxSpeed: 50,
-      range: 60,
-      passengers: 1,
-      engine: "Electric"
+      rating: 4.6,
+      availability: "Available",
+      bestFor: "Eco tours",
+      duration: "Half day"
     },
-    features: ["Zero emissions", "Silent operation", "USB charging port"]
-  },
-  {
-    id: "touring-250",
-    name: "Touring 250cc",
-    price: 55,
-    image: "/scooter-touring.jpg?height=300&width=400",
-    specs: {
-      maxSpeed: 110,
-      range: 200,
-      passengers: 2,
-      engine: "250cc"
-    },
-    features: ["Long distance comfort", "Large storage", "Wind protection"]
-  },
-  {
-    id: "premium-300",
-    name: "Premium 300cc",
-    price: 70,
-    image: "/scooter-premium.jpg?height=300&width=400",
-    specs: {
-      maxSpeed: 130,
-      range: 250,
-      passengers: 2,
-      engine: "300cc"
-    },
-    features: ["Top performance", "ABS braking", "Premium features"]
+    features: ["Zero emissions", "Silent operation", "USB charging port", "Modern design"]
   }
 ]
 
@@ -136,7 +110,7 @@ export default function Scooters({ lang }: { lang: string }) {
           </p>
         </div>
 
-        <div ref={sectionRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div ref={sectionRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {scootersData.map((scooter, index) => (
             <div 
               key={scooter.id} 
@@ -144,7 +118,7 @@ export default function Scooters({ lang }: { lang: string }) {
             >
               <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                 {/* Image Section */}
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-56 overflow-hidden">
                   <Image
                     src={scooter.image}
                     alt={`${scooter.name} scooter`}
@@ -153,6 +127,13 @@ export default function Scooters({ lang }: { lang: string }) {
                   />
                   <div className="absolute top-4 right-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white px-3 py-1 rounded-full text-sm font-bold">
                     €{scooter.price}/day
+                  </div>
+                  <div className={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold ${
+                    scooter.specs.availability === 'Available' 
+                      ? 'bg-green-500 text-white' 
+                      : 'bg-yellow-500 text-black'
+                  }`}>
+                    {scooter.specs.availability}
                   </div>
                 </div>
 
@@ -165,42 +146,42 @@ export default function Scooters({ lang }: { lang: string }) {
                   {/* Specs Grid */}
                   <div className="grid grid-cols-2 gap-3 mb-4">
                     <div className="flex items-center space-x-2">
-                      <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
-                        <Gauge className="h-4 w-4 text-blue-500" />
+                      <div className="w-8 h-8 rounded-full bg-yellow-100 dark:bg-yellow-900 flex items-center justify-center">
+                        <Star className="h-4 w-4 text-yellow-500" />
                       </div>
                       <div>
-                        <p className="text-xs text-gray-500 dark:text-gray-400">Max Speed</p>
-                        <p className="text-sm font-semibold">{scooter.specs.maxSpeed} km/h</p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">Rating</p>
+                        <p className="text-sm font-semibold">{scooter.specs.rating} ⭐</p>
                       </div>
                     </div>
 
                     <div className="flex items-center space-x-2">
-                      <div className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
-                        <Zap className="h-4 w-4 text-green-500" />
+                      <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
+                        <MapPin className="h-4 w-4 text-blue-500" />
                       </div>
                       <div>
-                        <p className="text-xs text-gray-500 dark:text-gray-400">Range</p>
-                        <p className="text-sm font-semibold">{scooter.specs.range} km</p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">Best For</p>
+                        <p className="text-sm font-semibold">{scooter.specs.bestFor}</p>
                       </div>
                     </div>
 
                     <div className="flex items-center space-x-2">
                       <div className="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center">
-                        <Users className="h-4 w-4 text-purple-500" />
+                        <Calendar className="h-4 w-4 text-purple-500" />
                       </div>
                       <div>
-                        <p className="text-xs text-gray-500 dark:text-gray-400">Passengers</p>
-                        <p className="text-sm font-semibold">{scooter.specs.passengers}</p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">Duration</p>
+                        <p className="text-sm font-semibold">{scooter.specs.duration}</p>
                       </div>
                     </div>
 
                     <div className="flex items-center space-x-2">
-                      <div className="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-900 flex items-center justify-center">
-                        <Clock className="h-4 w-4 text-orange-500" />
+                      <div className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
+                        <Shield className="h-4 w-4 text-green-500" />
                       </div>
                       <div>
-                        <p className="text-xs text-gray-500 dark:text-gray-400">Engine</p>
-                        <p className="text-sm font-semibold">{scooter.specs.engine}</p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">Insurance</p>
+                        <p className="text-sm font-semibold">Included</p>
                       </div>
                     </div>
                   </div>

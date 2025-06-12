@@ -9,38 +9,31 @@ import { getTranslations } from "@/lib/i18n"
 const scooters = [
   {
     id: 1,
-    name: "Urban Explorer",
-    image: "/placeholder.svg?height=600&width=800",
-    speed: "45 km/h",
-    range: "60 km",
+    name: "Classic City Rider",
+    image: "/scooters/scooter1.jpg",
+    description: "Perfect for urban exploration",
+    features: "Comfortable & Fuel Efficient",
   },
   {
     id: 2,
-    name: "Coastal Cruiser",
-    image: "/placeholder.svg?height=600&width=800",
-    speed: "40 km/h",
-    range: "70 km",
+name: "Classic City Rider",
+    image: "/scooters/scooter2.jpg",
+    description: "Perfect for urban exploration",
+    features: "Comfortable & Fuel Efficient",
   },
   {
     id: 3,
-    name: "Mountain Rider",
-    image: "/placeholder.svg?height=600&width=800",
-    speed: "50 km/h",
-    range: "55 km",
+ name: "Modern Maxi Scooter",
+  image: "/scooters/scooter3.jpg",
+  description: "Sleek and sporty design with advanced features",
+  features: "LED Headlights, Comfortable Seat, Top Box Storage, Windshield",
   },
   {
     id: 4,
-    name: "City Hopper",
-    image: "/placeholder.svg?height=600&width=800",
-    speed: "35 km/h",
-    range: "80 km",
-  },
-  {
-    id: 5,
-    name: "Beach Glider",
-    image: "/placeholder.svg?height=600&width=800",
-    speed: "42 km/h",
-    range: "65 km",
+ name: "Adventure Tourer",
+  image: "/scooters/scooter4.jpg",
+  description: "Rugged dual-sport for long-distance travel",
+  features: "Aluminum Luggage Boxes, Tall Windshield, Off-road Ready",
   },
 ]
 
@@ -93,7 +86,7 @@ export default function ScooterCarousel({ lang }: { lang: string }) {
     >
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">
-          {t.ourScooters}
+          {t.ourScooters || "Our Premium Scooter Collection"}
         </h2>
 
         <div className="relative max-w-5xl mx-auto">
@@ -106,18 +99,32 @@ export default function ScooterCarousel({ lang }: { lang: string }) {
               {scooters.map((scooter) => (
                 <div key={scooter.id} className="w-full flex-shrink-0">
                   <div className="relative aspect-[4/3] w-full">
-                    <Image src={scooter.image || "/placeholder.svg"} alt={scooter.name} fill className="object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-8">
-                      <h3 className="text-3xl font-bold text-white mb-2">{scooter.name}</h3>
-                      <div className="flex gap-4 text-white/90 mb-4">
-                        <p>
-                          {t.maxSpeed}: {scooter.speed}
-                        </p>
-                        <p>
-                          {t.range}: {scooter.range}
-                        </p>
+                    <Image 
+                      src={scooter.image} 
+                      alt={`${scooter.name} scooter`} 
+                      fill 
+                      className="object-cover" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-8">
+                      <div className="mb-2">
+                        <span className="inline-block px-3 py-1 bg-gradient-to-r from-orange-500 to-pink-500 text-white text-sm font-semibold rounded-full">
+                          Featured
+                        </span>
                       </div>
-                      <Button className="w-fit bg-orange-500 hover:bg-orange-600">{t.rentThis}</Button>
+                      <h3 className="text-3xl md:text-4xl font-bold text-white mb-2">{scooter.name}</h3>
+                      <p className="text-lg text-white/90 mb-2">{scooter.description}</p>
+                      <p className="text-white/80 mb-6">{scooter.features}</p>
+                      <div className="flex gap-4">
+                        <Button className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-105">
+                          {t.rentThis || "Rent This Scooter"}
+                        </Button>
+                        <Button 
+                          variant="outline" 
+                          className="border-white text-white hover:bg-white hover:text-gray-900 px-6 py-2 rounded-lg transition-all duration-300"
+                        >
+                          {t.learnMore || "Learn More"}
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -129,18 +136,18 @@ export default function ScooterCarousel({ lang }: { lang: string }) {
           <Button
             variant="ghost"
             size="icon"
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/50 backdrop-blur-sm rounded-full z-10"
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full z-10 border border-white/30"
             onClick={prevSlide}
           >
-            <ChevronLeft className="h-6 w-6" />
+            <ChevronLeft className="h-6 w-6 text-white" />
           </Button>
           <Button
             variant="ghost"
             size="icon"
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/50 backdrop-blur-sm rounded-full z-10"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full z-10 border border-white/30"
             onClick={nextSlide}
           >
-            <ChevronRight className="h-6 w-6" />
+            <ChevronRight className="h-6 w-6 text-white" />
           </Button>
 
           {/* Dots */}
@@ -148,12 +155,21 @@ export default function ScooterCarousel({ lang }: { lang: string }) {
             {scooters.map((_, index) => (
               <button
                 key={index}
-                className={`w-3 h-3 rounded-full transition-all ${
-                  index === currentIndex ? "bg-orange-500 w-6" : "bg-gray-300 dark:bg-gray-700"
+                className={`h-3 rounded-full transition-all duration-300 ${
+                  index === currentIndex 
+                    ? "bg-gradient-to-r from-orange-500 to-pink-500 w-8" 
+                    : "bg-gray-300 dark:bg-gray-700 w-3 hover:bg-gray-400 dark:hover:bg-gray-600"
                 }`}
                 onClick={() => goToSlide(index)}
               />
             ))}
+          </div>
+
+          {/* Scooter Counter */}
+          <div className="text-center mt-4">
+            <span className="text-sm text-gray-500 dark:text-gray-400">
+              {currentIndex + 1} of {scooters.length} scooters
+            </span>
           </div>
         </div>
       </div>
