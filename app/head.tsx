@@ -10,14 +10,14 @@ export default function Head() {
       <meta name="author" content="Tivat Rent Scooter" />
       <meta name="language" content="English" />
       <meta name="revisit-after" content="1 days" />
-      
+
       {/* Viewport and Mobile Optimization */}
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
       <meta name="mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       <meta name="apple-mobile-web-app-title" content="Tivat Rent Scooter" />
-      
+
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="business.business" />
       <meta property="og:url" content="https://www.tivat-rent-scooter.com/" />
@@ -34,7 +34,7 @@ export default function Head() {
       <meta property="business:contact_data:region" content="Boka Bay" />
       <meta property="business:contact_data:postal_code" content="85320" />
       <meta property="business:contact_data:country_name" content="Montenegro" />
-      
+
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content="https://www.tivat-rent-scooter.com/" />
@@ -44,15 +44,24 @@ export default function Head() {
       <meta name="twitter:image:alt" content="Premium scooter rental service in Tivat, Montenegro" />
       <meta name="twitter:creator" content="@TivatRentScooter" />
       <meta name="twitter:site" content="@TivatRentScooter" />
-      
+
       {/* Canonical URL */}
       <link rel="canonical" href="https://www.tivat-rent-scooter.com/" />
-      
+
       {/* Alternate Languages (Add if you support multiple languages) */}
       <link rel="alternate" hrefLang="en" href="https://www.tivat-rent-scooter.com/en/" />
       <link rel="alternate" hrefLang="sr" href="https://www.tivat-rent-scooter.com/sr/" />
       <link rel="alternate" hrefLang="x-default" href="https://www.tivat-rent-scooter.com/" />
-      
+
+      {/* Hidden Link for Related Project/Dashboard */}
+      {/* This link is not visually rendered but is present in the document head.
+          It can be used by web crawlers or for internal tracking of related projects.
+          The 'rel' attribute can be adjusted based on the specific relationship.
+          'bookmark' implies a link for a bookmarkable resource.
+          'nofollow' can be added if you don't want search engines to follow it for ranking.
+      */}
+      <link rel="bookmark" href="https://tivat-fids.vercel.app/" title="Tivat FIDS Dashboard" />
+
       {/* Favicons and App Icons */}
       <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -64,18 +73,18 @@ export default function Head() {
       <meta name="theme-color" content="#0070f3" />
       <meta name="msapplication-TileColor" content="#0070f3" />
       <meta name="msapplication-config" content="/browserconfig.xml" />
-      
+
       {/* Preconnect to External Domains */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link rel="preconnect" href="https://www.google-analytics.com" />
       <link rel="preconnect" href="https://www.googletagmanager.com" />
-      
+
       {/* DNS Prefetch */}
       <link rel="dns-prefetch" href="//fonts.googleapis.com" />
       <link rel="dns-prefetch" href="//www.google-analytics.com" />
       <link rel="dns-prefetch" href="//maps.googleapis.com" />
-      
+
       {/* Local Business Schema */}
       <script
         type="application/ld+json"
@@ -167,7 +176,7 @@ export default function Head() {
           })
         }}
       />
-      
+
       {/* Website Schema */}
       <script
         type="application/ld+json"
@@ -193,7 +202,7 @@ export default function Head() {
           })
         }}
       />
-      
+
       {/* Organization Schema */}
       <script
         type="application/ld+json"
@@ -227,7 +236,7 @@ export default function Head() {
           })
         }}
       />
-      
+
       {/* Breadcrumb Schema (for homepage) */}
       <script
         type="application/ld+json"
@@ -246,18 +255,18 @@ export default function Head() {
           })
         }}
       />
-      
+
       {/* Security Headers */}
       <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: http:; connect-src 'self' https://www.google-analytics.com;" />
       <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
       <meta httpEquiv="X-Frame-Options" content="SAMEORIGIN" />
       <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
       <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
-      
+
       {/* Performance Hints */}
       <link rel="preload" href="/fonts/primary-font.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
       <link rel="prefetch" href="/images/hero-scooter.webp" />
-      
+
       {/* Google Analytics 4 */}
       <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
       <script
@@ -273,7 +282,7 @@ export default function Head() {
           `
         }}
       />
-      
+
       {/* Google Tag Manager */}
       <script
         dangerouslySetInnerHTML={{

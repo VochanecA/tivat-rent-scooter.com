@@ -99,11 +99,11 @@ export default function ScooterCarousel({ lang }: { lang: string }) {
               {scooters.map((scooter) => (
                 <div key={scooter.id} className="w-full flex-shrink-0">
                   <div className="relative aspect-[4/3] w-full">
-                    <Image 
-                      src={scooter.image} 
-                      alt={`${scooter.name} scooter`} 
-                      fill 
-                      className="object-cover" 
+                    <Image
+                      src={scooter.image}
+                      alt={`${scooter.name} scooter`}
+                      fill
+                      className="object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-8">
                       <div className="mb-2">
@@ -115,15 +115,21 @@ export default function ScooterCarousel({ lang }: { lang: string }) {
                       <p className="text-lg text-white/90 mb-2">{scooter.description}</p>
                       <p className="text-white/80 mb-6">{scooter.features}</p>
                       <div className="flex gap-4">
-                        <Button className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-105">
+                        {/* Updated button to an <a> tag for phone call functionality */}
+                        <a
+                          href="tel:+38268775468" // The phone number to call
+                          className="inline-block bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-105"
+                          aria-label="Call to rent this scooter" // Accessible label
+                        >
                           {t.rentThis || "Rent This Scooter"}
-                        </Button>
-                        <Button 
-                          variant="outline" 
+                        </a>
+                        {/* Keep the original Button component for "Learn More" if it's still imported */}
+                        {/* <Button
+                          variant="outline"
                           className="border-white text-white hover:bg-white hover:text-gray-900 px-6 py-2 rounded-lg transition-all duration-300"
                         >
                           {t.learnMore || "Learn More"}
-                        </Button>
+                        </Button> */}
                       </div>
                     </div>
                   </div>
@@ -156,8 +162,8 @@ export default function ScooterCarousel({ lang }: { lang: string }) {
               <button
                 key={index}
                 className={`h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex 
-                    ? "bg-gradient-to-r from-orange-500 to-pink-500 w-8" 
+                  index === currentIndex
+                    ? "bg-gradient-to-r from-orange-500 to-pink-500 w-8"
                     : "bg-gray-300 dark:bg-gray-700 w-3 hover:bg-gray-400 dark:hover:bg-gray-600"
                 }`}
                 onClick={() => goToSlide(index)}

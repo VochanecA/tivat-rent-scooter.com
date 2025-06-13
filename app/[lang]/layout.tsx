@@ -1,9 +1,9 @@
-import { Metadata } from 'next'
-import Script from 'next/script'
+import { Metadata } from 'next';
+import Script from 'next/script';
 
 // Define your supported languages
-export const languages = ['en', 'ru', 'he', 'sr'] as const
-export type Language = typeof languages[number]
+export const languages = ['en', 'ru', 'he', 'sr'] as const;
+export type Language = typeof languages[number];
 
 // SEO content for each language
 const seoContent = {
@@ -31,16 +31,25 @@ const seoContent = {
     keywords: "tivat skuter rental, crna gora skuter iznajmljivanje, boka bay skuter, tivat rent skuter, motocikl rental tivat, vespa rental crna gora",
     locale: "sr_RS"
   }
+};
+
+// Validate language function
+async function validateLanguage(lang: string): Promise<Language> {
+  // Your validation logic here
+  return languages.includes(lang as Language) ? lang as Language : 'en';
 }
 
 interface LayoutProps {
-  children: React.ReactNode
-  params: { lang: Language }
+  children: React.ReactNode;
+  params: { lang: Language };
 }
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const validatedLang = await validateLanguage(lang);
 
-export async function generateMetadata({ params }: { params: { lang: Language } }): Promise<Metadata> {
-  const lang = params.lang || 'en'
-  const content = seoContent[lang] || seoContent.en
+
+
+  const content = seoContent[validatedLang] || seoContent.en;
 
   return {
     title: content.title,
@@ -95,12 +104,14 @@ export async function generateMetadata({ params }: { params: { lang: Language } 
       google: 'your-google-verification-code',
       yandex: 'your-yandex-verification-code',
     },
-  }
+  };
 }
 
-export default function LangLayout({ children, params }: LayoutProps) {
-  const lang = params.lang || 'en'
-  const content = seoContent[lang] || seoContent.en
+export default async function LangLayout({ children, params }: { children: React.ReactNode; params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
+  const validatedLang = await validateLanguage(lang);
+
+  const content = seoContent[validatedLang] || seoContent.en;
 
   // Structured data for the current language
   const structuredData = {
@@ -142,7 +153,7 @@ export default function LangLayout({ children, params }: LayoutProps) {
       { "@type": "Place", "name": "Boka Bay, Montenegro" },
       { "@type": "Place", "name": "Kotor, Montenegro" }
     ]
-  }
+  };
 
   return (
     <div lang={lang} dir={lang === 'he' ? 'rtl' : 'ltr'}>
@@ -183,5 +194,5 @@ export default function LangLayout({ children, params }: LayoutProps) {
         </noscript>
       )}
     </div>
-  )
+  );
 }

@@ -41,7 +41,9 @@ type TranslationKey =
   | "discounts"
   | "rentalInfo"
   | "scooterDescription"
-  | "scootersPricing"; // New key for pricing
+  | "scootersPricing"
+  | "requirementsText" // New key for requirements description
+  | "includedText";   // New key for included items description
 
 type Translations = Record<TranslationKey, string>;
 
@@ -92,7 +94,10 @@ const translations: Record<string, Translations> = {
     discounts: "Discounts",
     rentalInfo: "Rental Information",
     scooterDescription: "Choose from our premium collection of scooters, perfect for exploring Tivat and Montenegro",
-    scootersPricing: "Pricing", // English translation for pricing
+    scootersPricing: "Pricing",
+    // New translations for the content
+    requirementsText: "Valid driving license required. Minimum age 18 years.",
+    includedText: "Helmet, insurance, and 24/7 roadside assistance.",
   },
   sr: {
     home: "Početna",
@@ -141,7 +146,10 @@ const translations: Record<string, Translations> = {
     discounts: "Popusti",
     rentalInfo: "Informacije o iznajmljivanju",
     scooterDescription: "Birajte iz naše premium kolekcije skutera, savršenih za istraživanje Tivta i Crne Gore",
-    scootersPricing: "Cjenovnik", // Serbian translation for pricing
+    scootersPricing: "Cjenovnik",
+    // New translations for the content
+    requirementsText: "Potrebna važeća vozačka dozvola. Minimalna starost 18 godina.",
+    includedText: "Kaciga, osiguranje i pomoć na putu 24/7.",
   },
   ru: {
     home: "Главная",
@@ -190,7 +198,10 @@ const translations: Record<string, Translations> = {
     discounts: "Скидки",
     rentalInfo: "Информация об аренде",
     scooterDescription: "Выберите из нашей премиальной коллекции скутеров, идеальных для исследования Тивата и Черногории",
-    scootersPricing: "Цены", // Russian translation for pricing
+    scootersPricing: "Цены",
+    // New translations for the content
+    requirementsText: "Требуется действительное водительское удостоверение. Минимальный возраст 18 лет.",
+    includedText: "Шлем, страховка и круглосуточная помощь на дороге.",
   },
   he: {
     home: "בית",
@@ -235,7 +246,10 @@ const translations: Record<string, Translations> = {
     discounts: "הנחות",
     rentalInfo: "מידע על השכרה",
     scooterDescription: "בחרו מהאוסף הפרימיום שלנו של קטנועים, מושלמים לחקר טיבאט ומונטנגרו",
-    scootersPricing: "תמחור", // Hebrew translation for pricing
+    scootersPricing: "תמחור",
+    // New translations for the content
+    requirementsText: "נדרש רישיון נהיגה תקף. גיל מינימלי 18 שנים.",
+    includedText: "קסדה, ביטוח וסיוע בדרכים 24/7.",
   },
   fr: {
     home: "Accueil",
@@ -279,7 +293,10 @@ const translations: Record<string, Translations> = {
     discounts: "Remises",
     rentalInfo: "Informations de location",
     scooterDescription: "Choisissez parmi notre collection premium de scooters, parfaits pour explorer Tivat et le Monténégro",
-    scootersPricing: "Tarification", // French translation for pricing
+    scootersPricing: "Tarification",
+    // New translations for the content
+    requirementsText: "Permis de conduire valide requis. Âge minimum 18 ans.",
+    includedText: "Casque, assurance et assistance routière 24/7.",
   },
 };
 

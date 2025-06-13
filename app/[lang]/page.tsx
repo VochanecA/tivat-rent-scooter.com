@@ -16,9 +16,10 @@ export default async function LangPage({ params }: { params: Promise<{ lang: str
   return (
     <div className="flex flex-col w-full">
       <Hero lang={lang} />
-      <ScooterCarousel lang={lang} />
+
        <Scooters lang={lang} />
       <Features lang={lang} />
+            <ScooterCarousel lang={lang} />
       <SocialQR lang={lang} />
     </div>
   )

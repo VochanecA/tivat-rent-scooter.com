@@ -1,39 +1,40 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { useTheme } from "next-themes"
-import { useLanguage } from "@/components/language-provider"
-import { Button } from "@/components/ui/button"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Globe, Moon, Sun, Menu, X, Zap } from "lucide-react"
-import { getTranslations } from "@/lib/i18n"
-import Image from "next/image"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { useTheme } from "next-themes";
+import { useLanguage } from "@/components/language-provider";
+import { Button } from "@/components/ui/button";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Globe, Moon, Sun, Menu, X } from "lucide-react";
+import { getTranslations } from "@/lib/i18n";
+import Image from "next/image";
 
 export default function Header() {
-  const { theme, setTheme } = useTheme()
-  const { language, setLanguage } = useLanguage()
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [mounted, setMounted] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const t = getTranslations(language)
+  const { theme, setTheme } = useTheme();
+  const { language, setLanguage } = useLanguage();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  const t = getTranslations(language);
 
   useEffect(() => {
-    setMounted(true)
+    setMounted(true);
 
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-    }
+      setScrolled(window.scrollY > 20);
+    };
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-const navLinkClasses = `relative font-semibold transition-all duration-300 group ${
-  mounted && theme === "dark"
-    ? "text-gray-100 hover:text-orange-400"  // Light text for dark theme
-    : "text-gray-900 hover:text-orange-600"  // Dark text for light theme
-}`
+  const navLinkClasses = `relative font-semibold transition-all duration-300 group ${
+    mounted && theme === "dark"
+      ? "text-gray-100 hover:text-orange-400" // Light text for dark theme
+      : "text-gray-900 hover:text-orange-600" // Dark text for light theme
+  }`;
 
   const languageFlags = {
     en: "🇺🇸",
@@ -41,7 +42,7 @@ const navLinkClasses = `relative font-semibold transition-all duration-300 group
     ru: "🇷🇺",
     he: "🇮🇱",
     fr: "🇫🇷"
-  }
+  };
 
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${
@@ -177,8 +178,7 @@ const navLinkClasses = `relative font-semibold transition-all duration-300 group
               {[
                 { href: `/${language}`, label: t.home, icon: "🏠" },
                 { href: `/${language}#scooters`, label: t.scooters, icon: "🛵" },
-               { href: `/${language}#scootersPricing`, label: t.scootersPricing, icon: "💰" },
-
+                { href: `/${language}#scootersPricing`, label: t.scootersPricing, icon: "💰" },
                 { href: `/${language}#features`, label: t.features, icon: "⭐" },
                 { href: `/${language}#contact`, label: t.contact, icon: "📞" }
               ].map((item) => (
@@ -211,8 +211,8 @@ const navLinkClasses = `relative font-semibold transition-all duration-300 group
                     variant="outline"
                     size="sm"
                     onClick={() => {
-                      setLanguage(lang)
-                      setIsMobileMenuOpen(false)
+                      setLanguage(lang);
+                      setIsMobileMenuOpen(false);
                     }}
                     className={`justify-start space-x-2 h-12 rounded-xl border-2 transition-all duration-300 hover:scale-105 ${
                       language === lang
@@ -236,5 +236,5 @@ const navLinkClasses = `relative font-semibold transition-all duration-300 group
         </div>
       )}
     </header>
-  )
+  );
 }

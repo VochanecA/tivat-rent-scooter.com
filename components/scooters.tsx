@@ -208,25 +208,24 @@ export default function Scooters({ lang }: { lang: string }) {
           ))}
         </div>
 
-        {/* Additional Info */}
+{/* Additional Info */}
         <div className="max-w-4xl mx-auto mt-16 text-center">
           <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-8">
             <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">
               {t.rentalInfo || "Rental Information"}
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-gray-600 dark:text-gray-300">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-600 dark:text-gray-300">
               <div>
                 <h4 className="font-semibold mb-2">{t.requirements || "Requirements"}</h4>
-                <p>Valid driving license required. Minimum age 18 years.</p>
+                {/* Use the new translation key here */}
+                <p>{t.requirementsText}</p>
               </div>
               <div>
                 <h4 className="font-semibold mb-2">{t.included || "Included"}</h4>
-                <p>Helmet, insurance, and 24/7 roadside assistance.</p>
+                {/* Use the new translation key here */}
+                <p>{t.includedText}</p>
               </div>
-              <div>
-                <h4 className="font-semibold mb-2">{t.discounts || "Discounts"}</h4>
-                <p>Weekly rentals 15% off. Monthly rentals 25% off.</p>
-              </div>
+              {/* The 'Discounts' section has been removed */}
             </div>
           </div>
         </div>

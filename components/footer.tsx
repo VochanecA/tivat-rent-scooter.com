@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Instagram, Facebook, Twitter } from "lucide-react"
+import { Instagram, Globe, Twitter } from "lucide-react" // Import Globe icon, remove Facebook
 import { getTranslations } from "@/lib/i18n"
 
 export default function Footer() {
@@ -16,18 +16,33 @@ export default function Footer() {
             </h3>
             <p className="text-gray-300 mb-4 max-w-md">{t.footerDescription}</p>
             <div className="flex space-x-4">
-              <Link href="#" className="text-gray-300 hover:text-orange-500 transition-colors">
+              {/* Instagram Link */}
+              <Link
+                href="https://www.instagram.com/tivat_rent_a_scooter/"
+                className="text-gray-300 hover:text-orange-500 transition-colors"
+                target="_blank" // Open in new tab
+                rel="noopener noreferrer" // Security best practice for target='_blank'
+              >
                 <Instagram className="h-6 w-6" />
                 <span className="sr-only">Instagram</span>
               </Link>
-              <Link href="#" className="text-gray-300 hover:text-orange-500 transition-colors">
-                <Facebook className="h-6 w-6" />
-                <span className="sr-only">Facebook</span>
+
+              {/* Website Link */}
+              <Link
+                href="https://www.tivat-rent-scooter.com"
+                className="text-gray-300 hover:text-orange-500 transition-colors"
+                target="_blank" // Open in new tab
+                rel="noopener noreferrer" // Security best practice for target='_blank'
+              >
+                <Globe className="h-6 w-6" />
+                <span className="sr-only">Website</span>
               </Link>
-              <Link href="#" className="text-gray-300 hover:text-orange-500 transition-colors">
+
+              {/* Twitter Link (kept as per original) */}
+              {/* <Link href="#" className="text-gray-300 hover:text-orange-500 transition-colors">
                 <Twitter className="h-6 w-6" />
                 <span className="sr-only">Twitter</span>
-              </Link>
+              </Link> */}
             </div>
           </div>
 
@@ -49,11 +64,11 @@ export default function Footer() {
                   {t.features}
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="#contact" className="text-gray-300 hover:text-orange-500 transition-colors">
                   {t.contact}
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
 
@@ -62,15 +77,15 @@ export default function Footer() {
             <address className="not-italic text-gray-300">
               <p className="mb-2">Porto Montenegro</p>
               <p className="mb-2">Tivat, Montenegro</p>
-              <p className="mb-2">+382 123 456 789</p>
-              <p>info@tivatscooters.com</p>
+              <p className="mb-2">+382 (0)68 775 468</p>
+              {/* <p>info@tivatscooters.com</p> */}
             </address>
           </div>
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm">
           <p>
-            &copy; {new Date().getFullYear()}  Tivat Rent-a-Scooter. {t.allRightsReserved}
+            &copy; {new Date().getFullYear()} Tivat Rent-a-Scooter. {t.allRightsReserved}
           </p>
         </div>
       </div>

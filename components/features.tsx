@@ -1,6 +1,7 @@
 "use client"
 
 import { useRef, useEffect } from "react"
+import Link from "next/link" // Import Link if you use it elsewhere, otherwise not strictly needed here
 import { MapPin, Wind, Sun, Shield, Clock } from "lucide-react"
 import { getTranslations } from "@/lib/i18n"
 import { useLanguage } from "@/components/language-provider"
@@ -134,9 +135,14 @@ export default function Features({ lang }: { lang: string }) {
               <div className="p-6">
                 <h3 className="text-2xl font-bold mb-4">{t.readyToRide}</h3>
                 <p className="mb-6">{t.readyToRideDescription}</p>
-                <button className="px-6 py-3 bg-white text-orange-500 font-medium rounded-lg hover:bg-gray-100 transition-colors">
+                {/* Updated button to an <a> tag for phone call functionality */}
+                <a
+                  href="tel:+38268775468" // The phone number to call
+                  className="px-6 py-3 bg-white text-orange-500 font-medium rounded-lg hover:bg-gray-100 transition-colors inline-block"
+                  aria-label="Call Tivat Rent-a-Scooter to book now" // Accessible label for the link
+                >
                   {t.bookNow}
-                </button>
+                </a>
               </div>
             </div>
           </div>
