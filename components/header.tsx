@@ -29,11 +29,11 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const navLinkClasses = `relative font-semibold transition-all duration-300 group ${
-    mounted && theme === "dark"
-      ? "text-gray-100 hover:text-orange-400"
-      : "text-gray-800 hover:text-orange-600"
-  }`
+const navLinkClasses = `relative font-semibold transition-all duration-300 group ${
+  mounted && theme === "dark"
+    ? "text-gray-100 hover:text-orange-400"  // Light text for dark theme
+    : "text-gray-900 hover:text-orange-600"  // Dark text for light theme
+}`
 
   const languageFlags = {
     en: "🇺🇸",

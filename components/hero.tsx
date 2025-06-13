@@ -17,11 +17,11 @@ export default function Hero({ lang }: { lang: string }) {
 
   // List of images in the public directory
   const slides = [
-    "/tivat10.jpg",
+    "/scooters/scooter4.jpg",
     "/tivat11.jpg",
-    "/tivat9.jpg",
+    "/scooters/scooter2.jpg",
     "/tivat3.jpg",
-    "/tivat4.jpg",
+    "/scooters/scooter3.jpg",
   ]
 
   useEffect(() => {
