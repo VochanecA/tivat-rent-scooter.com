@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Instagram, Globe, Twitter } from "lucide-react" // Import Globe icon, remove Facebook
+import { Instagram, Globe, Twitter, Mail } from "lucide-react" // Added Mail icon
 import { getTranslations } from "@/lib/i18n"
 
 export default function Footer() {
@@ -20,8 +20,8 @@ export default function Footer() {
               <Link
                 href="https://www.instagram.com/tivat_rent_a_scooter/"
                 className="text-gray-300 hover:text-orange-500 transition-colors"
-                target="_blank" // Open in new tab
-                rel="noopener noreferrer" // Security best practice for target='_blank'
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Instagram className="h-6 w-6" />
                 <span className="sr-only">Instagram</span>
@@ -31,18 +31,21 @@ export default function Footer() {
               <Link
                 href="https://www.tivat-rent-scooter.com"
                 className="text-gray-300 hover:text-orange-500 transition-colors"
-                target="_blank" // Open in new tab
-                rel="noopener noreferrer" // Security best practice for target='_blank'
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Globe className="h-6 w-6" />
                 <span className="sr-only">Website</span>
               </Link>
 
-              {/* Twitter Link (kept as per original) */}
-              {/* <Link href="#" className="text-gray-300 hover:text-orange-500 transition-colors">
-                <Twitter className="h-6 w-6" />
-                <span className="sr-only">Twitter</span>
-              </Link> */}
+              {/* Email Link */}
+              <Link
+                href="mailto:info@tivat-rent-scooter.com"
+                className="text-gray-300 hover:text-orange-500 transition-colors"
+              >
+                <Mail className="h-6 w-6" />
+                <span className="sr-only">Email</span>
+              </Link>
             </div>
           </div>
 
@@ -64,11 +67,6 @@ export default function Footer() {
                   {t.features}
                 </Link>
               </li>
-              {/* <li>
-                <Link href="#contact" className="text-gray-300 hover:text-orange-500 transition-colors">
-                  {t.contact}
-                </Link>
-              </li> */}
             </ul>
           </div>
 
@@ -78,7 +76,10 @@ export default function Footer() {
               <p className="mb-2">Porto Montenegro</p>
               <p className="mb-2">Tivat, Montenegro</p>
               <p className="mb-2">+382 (0)68 775 468</p>
-              {/* <p>info@tivatscooters.com</p> */}
+              <p className="mb-2 flex items-center">
+                <Mail className="h-4 w-4 mr-2" />
+                info@tivat-rent-scooter.com
+              </p>
             </address>
           </div>
         </div>
