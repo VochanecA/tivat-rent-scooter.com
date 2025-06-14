@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from "react"
 import Image from "next/image"
-import { Star, Shield, MapPin, Calendar } from "lucide-react"
+import { Star, Shield, MapPin, Calendar, Phone } from "lucide-react"
 import { getTranslations } from "@/lib/i18n"
 
 interface ScooterData {
@@ -44,7 +44,7 @@ const scootersData: ScooterData[] = [
       bestFor: "City tours",
       duration: "Full day/Multi day"
     },
-  features: ["New, 2025", "USB charging", "CBS breaks", "Digital dashboard", "Comfortable seat"]
+    features: ["New, 2025", "USB charging", "CBS breaks", "Digital dashboard", "Comfortable seat"]
   },
   {
     id: "retro-vintage",
@@ -77,6 +77,10 @@ const scootersData: ScooterData[] = [
 export default function Scooters({ lang }: { lang: string }) {
   const t = getTranslations(lang)
   const sectionRef = useRef<HTMLDivElement>(null)
+
+  const handleBookNow = () => {
+    window.location.href = "tel:+38268775468"
+  }
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -199,7 +203,11 @@ export default function Scooters({ lang }: { lang: string }) {
                   </div>
 
                   {/* Book Button */}
-                  <button className="w-full bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                  <button 
+                    onClick={handleBookNow}
+                    className="w-full bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center gap-2"
+                  >
+                    <Phone className="h-5 w-5" />
                     {t.bookNow || "Book Now"}
                   </button>
                 </div>
@@ -217,15 +225,12 @@ export default function Scooters({ lang }: { lang: string }) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-600 dark:text-gray-300">
               <div>
                 <h4 className="font-semibold mb-2">{t.requirements || "Requirements"}</h4>
-                {/* Use the new translation key here */}
                 <p>{t.requirementsText}</p>
               </div>
               <div>
                 <h4 className="font-semibold mb-2">{t.included || "Included"}</h4>
-                {/* Use the new translation key here */}
                 <p>{t.includedText}</p>
               </div>
-              {/* The 'Discounts' section has been removed */}
             </div>
           </div>
         </div>
