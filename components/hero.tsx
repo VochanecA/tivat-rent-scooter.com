@@ -199,7 +199,7 @@ const handleLearnMore = () => {
             </div>
             <div className="flex items-center">
               <div className="w-3 h-3 bg-blue-400 rounded-full mr-2" />
-              Free Cancellation
+              Free Delivery
             </div>
           </div>
         </div>
