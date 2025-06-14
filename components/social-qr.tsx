@@ -89,7 +89,7 @@ export default function SocialQR({ lang }: { lang: string }) {
 
           <div className="qr-card opacity-0 translate-y-8 transition-all duration-700 delay-300">
             <a
-              href="https://www.tivat-rent-scooter.com"
+              href="https://tivat-rent-scooter.com"
               target="_blank"
               rel="noopener noreferrer"
               className="block"
