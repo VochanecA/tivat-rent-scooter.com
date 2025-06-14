@@ -22,55 +22,55 @@ interface ScooterData {
 const scootersData: ScooterData[] = [
   {
     id: "classic-city",
-    name: "Classic City Rider",
-    price: 25,
+    name: "VERA CRUZ 125cc/2025",
+    price: 30,
     image: "/scooters/scooter1.jpg",
     specs: {
-      rating: 4.8,
+      rating: 5.0,
       availability: "Available",
       bestFor: "City tours",
-      duration: "Half/Full day"
+      duration: "Full day/Multi day"
     },
-    features: ["Perfect for city rides", "Fuel efficient", "Easy to park", "Comfortable seat"]
+    features: ["New, 2025", "USB charging", "CBS breaks", "Digital dashboard", "Comfortable seat"]
   },
   {
-    id: "sport-adventure",
-    name: "Sport Adventure",
-    price: 35,
+    id: "classic-city2",
+    name: "VERA CRUZ 125cc/2025",
+    price: 30,
     image: "/scooters/scooter2.jpg",
     specs: {
-      rating: 4.9,
+      rating: 5.0,
       availability: "Available",
-      bestFor: "Long trips",
-      duration: "Multi-day"
+      bestFor: "City tours",
+      duration: "Full day/Multi day"
     },
-    features: ["Higher performance", "Comfortable for two", "Great for longer trips", "Storage compartment"]
+  features: ["New, 2025", "USB charging", "CBS breaks", "Digital dashboard", "Comfortable seat"]
   },
   {
     id: "retro-vintage",
-    name: "Retro Vintage",
-    price: 30,
+    name: "SYM CRUISE 300",
+    price: 45,
     image: "/scooters/scooter3.jpg",
     specs: {
-      rating: 4.7,
+      rating: 4.8,
       availability: "Limited",
       bestFor: "Photo tours",
-      duration: "Half/Full day"
+      duration: "Full day"
     },
-    features: ["Classic Italian style", "Instagram worthy", "Premium comfort", "Vintage charm"]
+    features: ["Classic Italian style", "Instagram worthy", "Premium comfort", "Modern charm"]
   },
   {
-    id: "eco-electric",
-    name: "Eco Electric",
-    price: 40,
+    id: "sport-adventure",
+    name: "KOVE 500 cc/2024 Manual",
+    price: 60,
     image: "/scooters/scooter4.jpg",
     specs: {
       rating: 4.6,
       availability: "Available",
       bestFor: "Eco tours",
-      duration: "Half day"
+      duration: "Full day"
     },
-    features: ["Zero emissions", "Silent operation", "USB charging port", "Modern design"]
+    features: ["Manual transmission", "Efficient", "Cross", "Modern design"]
   }
 ]
 
@@ -125,7 +125,7 @@ export default function Scooters({ lang }: { lang: string }) {
                     fill
                     className="object-cover transition-transform duration-300 hover:scale-105"
                   />
-                  <div className="absolute top-4 right-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                  <div className="absolute top-4 right-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white px-4 py-2 rounded-full text-lg font-bold shadow-md">
                     €{scooter.price}/day
                   </div>
                   <div className={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold ${
@@ -180,8 +180,8 @@ export default function Scooters({ lang }: { lang: string }) {
                         <Shield className="h-4 w-4 text-green-500" />
                       </div>
                       <div>
-                        <p className="text-xs text-gray-500 dark:text-gray-400">Insurance</p>
-                        <p className="text-sm font-semibold">Included</p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">Rating</p>
+                        <p className="text-sm font-semibold">Best buy!</p>
                       </div>
                     </div>
                   </div>
@@ -208,7 +208,7 @@ export default function Scooters({ lang }: { lang: string }) {
           ))}
         </div>
 
-{/* Additional Info */}
+        {/* Additional Info */}
         <div className="max-w-4xl mx-auto mt-16 text-center">
           <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-8">
             <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">

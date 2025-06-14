@@ -9,31 +9,31 @@ import { getTranslations } from "@/lib/i18n"
 const scooters = [
   {
     id: 1,
-    name: "Classic City Rider",
+    name: "VeraCruz 125cc/2025",
     image: "/scooters/scooter1.jpg",
     description: "Perfect for urban exploration",
     features: "Comfortable & Fuel Efficient",
   },
   {
     id: 2,
-name: "Classic City Rider",
+    name: "VeraCruz 125cc/2025",
     image: "/scooters/scooter2.jpg",
     description: "Perfect for urban exploration",
     features: "Comfortable & Fuel Efficient",
   },
   {
     id: 3,
- name: "Modern Maxi Scooter",
+ name: "Sym Cruise 300cc /2024",
   image: "/scooters/scooter3.jpg",
   description: "Sleek and sporty design with advanced features",
-  features: "LED Headlights, Comfortable Seat, Top Box Storage, Windshield",
+  features: "LED, Comfortable Seat, Top Box Storage, Windshield",
   },
   {
     id: 4,
- name: "Adventure Tourer",
-  image: "/scooters/scooter4.jpg",
-  description: "Rugged dual-sport for long-distance travel",
-  features: "Aluminum Luggage Boxes, Tall Windshield, Off-road Ready",
+    name: "KOVE 500 cc / 2024 Manual",
+    image: "/scooters/scooter4.jpg",
+    description: "Rugged dual-sport for long-distance travel",
+    features: "Aluminum Luggage Boxes, Tall Windshield, Off-road Ready",
   },
 ]
 

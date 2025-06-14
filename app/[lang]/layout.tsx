@@ -1,5 +1,7 @@
+// app\[lang]\layout.tsx
 import { Metadata } from 'next';
 import Script from 'next/script';
+import NotificationBar from '@/components/NotificationBar'; // Import the NotificationBar component
 
 // Define your supported languages
 export const languages = ['en', 'ru', 'he', 'sr'] as const;
@@ -43,12 +45,10 @@ interface LayoutProps {
   children: React.ReactNode;
   params: { lang: Language };
 }
+
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   const validatedLang = await validateLanguage(lang);
-
-
-
   const content = seoContent[validatedLang] || seoContent.en;
 
   return {
@@ -70,7 +70,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     openGraph: {
       type: 'website',
       locale: content.locale,
-      url: `https://www.tivat-rent-scooter.com/${lang}`,
+      url: `https://www.tivat-rent-scooter.com/${validatedLang}`,
       title: content.title,
       description: content.description,
       siteName: 'Tivat Rent Scooter',
@@ -91,7 +91,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       creator: '@TivatRentScooter',
     },
     alternates: {
-      canonical: `https://www.tivat-rent-scooter.com/${lang}`,
+      canonical: `https://www.tivat-rent-scooter.com/${validatedLang}`,
       languages: {
         'en': 'https://www.tivat-rent-scooter.com/en',
         'ru': 'https://www.tivat-rent-scooter.com/ru',
@@ -110,7 +110,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 export default async function LangLayout({ children, params }: { children: React.ReactNode; params: Promise<{ lang: string }> }) {
   const { lang } = await params;
   const validatedLang = await validateLanguage(lang);
-
   const content = seoContent[validatedLang] || seoContent.en;
 
   // Structured data for the current language
@@ -123,7 +122,7 @@ export default async function LangLayout({ children, params }: { children: React
       "https://www.tivat-rent-scooter.com/images/scooter-rental-2.jpg"
     ],
     "description": content.description,
-    "url": `https://www.tivat-rent-scooter.com/${lang}`,
+    "url": `https://www.tivat-rent-scooter.com/${validatedLang}`,
     "telephone": "+382-068-775-468",
     "email": "info@tivat-rent-scooter.com",
     "address": {
@@ -156,7 +155,7 @@ export default async function LangLayout({ children, params }: { children: React
   };
 
   return (
-    <div lang={lang} dir={lang === 'he' ? 'rtl' : 'ltr'}>
+    <div lang={validatedLang} dir={validatedLang === 'he' ? 'rtl' : 'ltr'}>
       {/* Structured Data Script */}
       <Script
         id="structured-data"
@@ -167,7 +166,7 @@ export default async function LangLayout({ children, params }: { children: React
       />
 
       {/* Language-specific analytics for Russian market */}
-      {lang === 'ru' && (
+      {validatedLang === 'ru' && (
         <Script
           id="yandex-metrika"
           strategy="afterInteractive"
@@ -182,11 +181,14 @@ export default async function LangLayout({ children, params }: { children: React
         />
       )}
 
+      {/* Notification Bar */}
+      <NotificationBar />
+
       {/* Main content */}
       {children}
 
       {/* Language-specific noscript tags */}
-      {lang === 'ru' && (
+      {validatedLang === 'ru' && (
         <noscript>
           <div>
             <img src="https://mc.yandex.ru/watch/XXXXXXXX" style={{position:'absolute', left:'-9999px'}} alt="" />

@@ -1,3 +1,4 @@
+// app/layout.tsx
 import type React from "react";
 import "./globals.css";
 import { Inter } from "next/font/google";
@@ -6,6 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { LanguageProvider } from "@/components/language-provider";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import Testimonials from "@/components/Testimonials";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
 
@@ -109,7 +111,10 @@ export default function RootLayout({
           <LanguageProvider>
             <div className="flex min-h-screen flex-col">
               <Header />
-              <main className="flex-1">{children}</main>
+              <main className="flex-1">
+                {children}
+                <Testimonials lang="en" /> {/* Assuming English as default language */}
+              </main>
               <Footer />
             </div>
           </LanguageProvider>

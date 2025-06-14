@@ -61,36 +61,38 @@ export default function Hero({ lang }: { lang: string }) {
   }
 
   // Handle Learn More click with smooth scroll
-  const handleLearnMore = () => {
-    // Check if we're already on the same language page
-    const currentPath = window.location.pathname
-    const targetPath = `/${language}`
-    
-    if (currentPath === targetPath || currentPath === `/${language}/`) {
-      // We're on the same page, just scroll to the section
-      const element = document.getElementById('scootersPricing')
+const handleLearnMore = () => {
+  const currentPath = window.location.pathname;
+  const targetPath = `/${language}`;
+
+  console.log('Current Path:', currentPath);
+  console.log('Target Path:', targetPath);
+
+  if (currentPath === targetPath || currentPath === `/${language}/`) {
+    const element = document.getElementById('scootersPricing');
+    console.log('Element found:', element);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  } else {
+    router.push(`/${language}#scootersPricing`);
+
+    setTimeout(() => {
+      const element = document.getElementById('scootersPricing');
+      console.log('Element found after navigation:', element);
       if (element) {
-        element.scrollIntoView({ 
+        element.scrollIntoView({
           behavior: 'smooth',
           block: 'start'
-        })
+        });
       }
-    } else {
-      // Navigate to the correct language route with hash
-      router.push(`/${language}#scootersPricing`)
-      
-      // Add a small delay to ensure navigation completes before scrolling
-      setTimeout(() => {
-        const element = document.getElementById('scootersPricing')
-        if (element) {
-          element.scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'start'
-          })
-        }
-      }, 100)
-    }
+    }, 100);
   }
+};
+
 
   // Handle Rent Now click
   const handleRentNow = () => {
@@ -141,8 +143,8 @@ export default function Hero({ lang }: { lang: string }) {
           </p>
 
           {/* Modern Button Group */}
-          {/* <div className="flex flex-col sm:flex-row gap-4 mb-8">
-            <Button
+          <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            {/* <Button
               size="lg"
               onClick={handleRentNow}
               className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-8 py-4 rounded-full shadow-2xl shadow-orange-500/25 transition-all duration-300 hover:scale-105 hover:shadow-orange-500/40"
@@ -151,40 +153,43 @@ export default function Hero({ lang }: { lang: string }) {
               <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={handleLearnMore}
-              className={`${learnMoreTextColor} border-2 border-white/30 hover:bg-white/10 backdrop-blur-sm px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:border-white/50`}
-            >
-              {t.learnMore}
-            </Button>
-          </div> */}
+            </Button> */}
+<Button
+  size="lg"
+  variant="outline"
+  onClick={handleLearnMore}
+  className={`bg-yellow-400 ${learnMoreTextColor} border-2 border-yellow-500 hover:bg-yellow-500 text-black hover:text-white backdrop-blur-sm px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:border-yellow-300`}
+>
+  {t.viewScooters}
+</Button>
+
+
+          </div>
 
           {/* Phone Number - Blinking Rounded Button */}
-          <button
-            onClick={handlePhoneCall}
-            className="inline-flex items-center px-8 py-4 mb-6 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold text-3xl md:text-4xl rounded-full shadow-2xl shadow-red-500/30 transition-all duration-300 hover:scale-105 hover:shadow-red-500/50 animate-pulse"
-            style={{
-              animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
-            }}
-          >
-            <svg 
-              className="w-8 h-8 mr-3" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" 
-              />
-            </svg>
-            068 775 468
-          </button>
+<button
+  onClick={handlePhoneCall}
+  className="w-full md:w-auto inline-flex justify-center items-center px-8 py-4 mb-6 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold text-3xl md:text-4xl rounded-full shadow-2xl shadow-red-500/30 transition-all duration-300 hover:scale-105 hover:shadow-red-500/50 animate-pulse"
+  style={{
+    animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+  }}
+>
+  <svg
+    className="w-8 h-8 mr-3"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+    />
+  </svg>
+  068 775 468
+</button>
+
 
           {/* Feature Highlights */}
           <div className="flex flex-wrap gap-6 text-white/80 text-sm">
