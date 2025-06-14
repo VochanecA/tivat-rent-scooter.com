@@ -53,7 +53,7 @@ const scootersData: ScooterData[] = [
     image: "/scooters/scooter3.jpg",
     specs: {
       rating: 4.8,
-      availability: "Limited",
+      availability: "Available",
       bestFor: "Photo tours",
       duration: "Full day"
     },
