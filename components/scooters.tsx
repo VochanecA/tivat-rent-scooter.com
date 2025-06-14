@@ -57,7 +57,7 @@ const scootersData: ScooterData[] = [
       bestFor: "Photo tours",
       duration: "Full day"
     },
-    features: ["Classic Italian style", "Instagram worthy", "Premium comfort", "Modern charm"]
+    features: ["Classic Italian style", "Instagram worthy", "Efficient", "Premium comfort","Comfortable seat", "Modern charm"]
   },
   {
     id: "sport-adventure",
@@ -65,12 +65,25 @@ const scootersData: ScooterData[] = [
     price: 60,
     image: "/scooters/scooter4.jpg",
     specs: {
-      rating: 4.6,
+      rating: 4.8,
       availability: "Available",
       bestFor: "Eco tours",
       duration: "Full day"
     },
-    features: ["Manual transmission", "Efficient", "Cross", "Modern design"]
+    features: ["Manual transmission", "Efficient", "Cross", "Comfortable seat","Modern design"]
+  },
+  {
+    id: "classic-city-2020",
+    name: "VERA CRUZ 125cc/2020",
+    price: 25,
+    image: "/scooters/scooter5.jpg",
+    specs: {
+      rating: 4.8,
+      availability: "Available",
+      bestFor: "City tours",
+      duration: "Full day/Multi day"
+    },
+    features: ["Reliable model", "Great value", "Easy to ride", "Comfortable seat"]
   }
 ]
 
@@ -114,7 +127,7 @@ export default function Scooters({ lang }: { lang: string }) {
           </p>
         </div>
 
-        <div ref={sectionRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div ref={sectionRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {scootersData.map((scooter, index) => (
             <div 
               key={scooter.id} 
@@ -199,6 +212,12 @@ export default function Scooters({ lang }: { lang: string }) {
                           {feature}
                         </li>
                       ))}
+                      {/* Helmet included free with rounded rectangle */}
+                      <li className="mt-3">
+                        <span className="inline-block bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs font-semibold px-3 py-1 rounded-full">
+                          Helmet included free
+                        </span>
+                      </li>
                     </ul>
                   </div>
 
