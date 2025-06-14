@@ -1,10 +1,36 @@
 import Link from "next/link"
-import { Instagram, Globe, Twitter, Mail } from "lucide-react" // Added Mail icon
+import { Instagram, Globe, Mail } from "lucide-react"
 import { getTranslations } from "@/lib/i18n"
 
 export default function Footer() {
   // Default to English for the footer
   const t = getTranslations("en")
+
+  // Function to format today's date as dd.mm.yyyy
+  const getTodayDate = () => {
+    const today = new Date()
+    const day = String(today.getDate()).padStart(2, '0')
+    const month = String(today.getMonth() + 1).padStart(2, '0')
+    const year = today.getFullYear()
+    return `${day}.${month}.${year}`
+  }
+
+  // Create email content with pre-filled subject and body
+  const emailSubject = `Scooter rental - ${getTodayDate()}`
+  const emailBody = `Hello Tivat Rent-a-Scooter team,
+
+I would like to rent a scooter with the following details:
+
+- Name and Surname: 
+- Scooter Type: 
+- Rental Period: From [dd.mm.yyyy] to [dd.mm.yyyy]
+- Pickup Location: 
+- Phone Number (mandatory): 
+
+Please let me know about availability and next steps.
+
+Best regards,
+[Your Name]`
 
   return (
     <footer className="bg-gray-900 text-white">
@@ -40,7 +66,7 @@ export default function Footer() {
 
               {/* Email Link */}
               <Link
-                href="mailto:info@tivat-rent-scooter.com"
+                href={`mailto:info@tivat-rent-scooter.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`}
                 className="text-gray-300 hover:text-orange-500 transition-colors"
               >
                 <Mail className="h-6 w-6" />
@@ -78,7 +104,12 @@ export default function Footer() {
               <p className="mb-2">+382 (0)68 775 468</p>
               <p className="mb-2 flex items-center">
                 <Mail className="h-4 w-4 mr-2" />
-                info@tivat-rent-scooter.com
+                <Link 
+                  href={`mailto:info@tivat-rent-scooter.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`}
+                  className="hover:text-orange-500 transition-colors"
+                >
+                  info@tivat-rent-scooter.com
+                </Link>
               </p>
             </address>
           </div>
