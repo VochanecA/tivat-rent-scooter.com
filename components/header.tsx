@@ -80,6 +80,7 @@ export default function Header() {
           {[
             { href: `/${language}`, label: t.home },
             { href: `/${language}#scooters`, label: t.scooters },
+            { href: `/${language}/tips`, label: t.tipsPageTitle }, // Added Tips page link
             { href: `/${language}#features`, label: t.features },
             { href: `/${language}#scootersPricing`, label: t.scootersPricing },
             { href: `/${language}#contact`, label: t.contact }
@@ -178,6 +179,7 @@ export default function Header() {
               {[
                 { href: `/${language}`, label: t.home, icon: "🏠" },
                 { href: `/${language}#scooters`, label: t.scooters, icon: "🛵" },
+                { href: `/${language}/tips`, label: t.tipsPageTitle, icon: "💡" }, // Added Tips page link with an icon
                 { href: `/${language}#scootersPricing`, label: t.scootersPricing, icon: "💰" },
                 { href: `/${language}#features`, label: t.features, icon: "⭐" },
                 { href: `/${language}#contact`, label: t.contact, icon: "📞" }

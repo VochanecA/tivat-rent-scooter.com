@@ -55,10 +55,19 @@ export default function Hero({ lang }: { lang: string }) {
   // Determine the text color for the "Learn More" button based on the theme
   const learnMoreTextColor = mounted && theme === "dark" ? "text-white" : "text-black"
 
-  // Handle phone call
-  const handlePhoneCall = () => {
-    window.location.href = "tel:+38268775468"
-  }
+  // Handle Viber message
+  const handleViberMessage = () => {
+    const phoneNumber = "38268775468"; // The predefined phone number (without +)
+    const message = "I want to rent a scooter"; // Your predefined message
+    const encodedMessage = encodeURIComponent(message); // URL-encode the message
+
+    // Construct the Viber deep link
+    // The '+', being part of the international dialing code, must be URL-encoded as %2B
+    const viberLink = `viber://chat?number=%2B${phoneNumber}&text=${encodedMessage}`;
+
+    // Open the Viber link
+    window.open(viberLink, '_blank');
+  };
 
   // Handle Learn More click with smooth scroll
 const handleLearnMore = () => {
@@ -166,28 +175,23 @@ const handleLearnMore = () => {
 
           </div>
 
-          {/* Phone Number - Blinking Rounded Button */}
+          {/* Viber Message Button with Icon and Two Rows */}
 <button
-  onClick={handlePhoneCall}
-  className="w-full md:w-auto inline-flex justify-center items-center px-8 py-4 mb-6 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold text-3xl md:text-4xl rounded-full shadow-2xl shadow-red-500/30 transition-all duration-300 hover:scale-105 hover:shadow-red-500/50 animate-pulse"
+  onClick={handleViberMessage}
+  className="w-full md:w-auto inline-flex justify-center items-center px-8 py-4 mb-6
+             bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800
+             text-white font-bold rounded-full shadow-2xl shadow-purple-600/30
+             transition-all duration-300 hover:scale-105 hover:shadow-purple-600/50 animate-pulse"
   style={{
     animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
   }}
 >
-  <svg
-    className="w-8 h-8 mr-3"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-    />
-  </svg>
-  068 775 468
+  {/* Corrected: Use img tag directly, not inside an SVG tag */}
+  <img src="/viber-svgrepo-com.svg" alt="Viber Icon" className="w-8 h-8 mr-3" />
+  <div className="flex flex-col items-start">
+    <span className="text-xl md:text-2xl leading-none">Message on Viber</span>
+    <span className="text-xl md:text-2xl leading-none">068 775 468</span>
+  </div>
 </button>
 
 
@@ -212,8 +216,8 @@ const handleLearnMore = () => {
             key={index}
             onClick={() => setCurrentSlide(index)}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              currentSlide === index 
-                ? 'bg-white scale-125 shadow-lg' 
+              currentSlide === index
+                ? 'bg-white scale-125 shadow-lg'
                 : 'bg-white/40 hover:bg-white/60'
             }`}
           />
