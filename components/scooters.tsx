@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from "react"
 import Image from "next/image"
-import { Star, Shield, MapPin, Calendar, Phone } from "lucide-react"
+import { Star, Shield, MapPin, Calendar, MessageCircle } from "lucide-react"
 import { getTranslations } from "@/lib/i18n"
 
 interface ScooterData {
@@ -36,7 +36,7 @@ const scootersData: ScooterData[] = [
   {
     id: "classic-city2",
     name: "VERA CRUZ 125cc/2025",
-    price: 30,
+    price: 35,
     image: "/scooters/scooter2.jpg",
     specs: {
       rating: 5.0,
@@ -49,7 +49,7 @@ const scootersData: ScooterData[] = [
   {
     id: "retro-vintage",
     name: "SYM CRUISE 300",
-    price: 45,
+    price: 50,
     image: "/scooters/scooter3.jpg",
     specs: {
       rating: 4.8,
@@ -62,7 +62,7 @@ const scootersData: ScooterData[] = [
   {
     id: "sport-adventure",
     name: "KOVE 500 cc/2024 Manual",
-    price: 60,
+    price: 65,
     image: "/scooters/scooter4.jpg",
     specs: {
       rating: 4.8,
@@ -75,7 +75,7 @@ const scootersData: ScooterData[] = [
   {
     id: "classic-city-2020",
     name: "VERA CRUZ 125cc/2020",
-    price: 25,
+    price: 30,
     image: "/scooters/scooter5.jpg",
     specs: {
       rating: 4.8,
@@ -91,8 +91,17 @@ export default function Scooters({ lang }: { lang: string }) {
   const t = getTranslations(lang)
   const sectionRef = useRef<HTMLDivElement>(null)
 
-  const handleBookNow = () => {
-    window.location.href = "tel:+38268775468"
+  // Handle Viber message
+  const handleViberMessage = () => {
+    const phoneNumber = "38268775468"; // The predefined phone number (without +)
+    const message = "I want to rent a scooter"; // Your predefined message
+    const encodedMessage = encodeURIComponent(message); // URL-encode the message
+
+    // Construct the Viber deep link
+    const viberLink = `viber://chat?number=${phoneNumber}&text=${encodedMessage}`;
+
+    // Open the Viber link
+    window.open(viberLink, '_blank');
   }
 
   useEffect(() => {
@@ -129,8 +138,8 @@ export default function Scooters({ lang }: { lang: string }) {
 
         <div ref={sectionRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {scootersData.map((scooter, index) => (
-            <div 
-              key={scooter.id} 
+            <div
+              key={scooter.id}
               className={`scooter-card opacity-0 translate-y-8 transition-all duration-700 delay-${(index + 1) * 100}`}
             >
               <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
@@ -146,8 +155,8 @@ export default function Scooters({ lang }: { lang: string }) {
                     €{scooter.price}/day
                   </div>
                   <div className={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold ${
-                    scooter.specs.availability === 'Available' 
-                      ? 'bg-green-500 text-white' 
+                    scooter.specs.availability === 'Available'
+                      ? 'bg-green-500 text-white'
                       : 'bg-yellow-500 text-black'
                   }`}>
                     {scooter.specs.availability}
@@ -221,13 +230,13 @@ export default function Scooters({ lang }: { lang: string }) {
                     </ul>
                   </div>
 
-                  {/* Book Button */}
-                  <button 
-                    onClick={handleBookNow}
-                    className="w-full bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center gap-2"
+                  {/* Book Button for Viber */}
+                  <button
+                    onClick={handleViberMessage}
+                    className="w-full bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center gap-2"
                   >
-                    <Phone className="h-5 w-5" />
-                    {t.bookNow || "Book Now"}
+                    <MessageCircle className="h-5 w-5" />
+                    {t.bookNow || "Book Now via Viber"}
                   </button>
                 </div>
               </div>
