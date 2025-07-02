@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { getTranslations } from "@/lib/i18n"
 
@@ -23,10 +23,10 @@ const scooters = [
   },
   {
     id: 3,
- name: "Sym Cruise 300cc /2024",
-  image: "/scooters/scooter3.jpg",
-  description: "Sleek and sporty design with advanced features",
-  features: "LED, Comfortable Seat, Top Box Storage, Windshield",
+    name: "Sym Cruise 300cc /2024",
+    image: "/scooters/scooter3.jpg",
+    description: "Sleek and sporty design with advanced features",
+    features: "LED, Comfortable Seat, Top Box Storage, Windshield",
   },
   {
     id: 4,
@@ -53,6 +53,19 @@ export default function ScooterCarousel({ lang }: { lang: string }) {
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index)
+  }
+
+  // Handle Viber message
+  const handleViberMessage = () => {
+    const phoneNumber = "38268775468"; // The predefined phone number (without +)
+    const message = `I want to rent ${scooters[currentIndex].name}`; // Message with the current scooter name
+    const encodedMessage = encodeURIComponent(message); // URL-encode the message
+
+    // Construct the Viber deep link
+    const viberLink = `viber://chat?number=${phoneNumber}&text=${encodedMessage}`;
+
+    // Open the Viber link
+    window.open(viberLink, '_blank');
   }
 
   useEffect(() => {
@@ -115,21 +128,14 @@ export default function ScooterCarousel({ lang }: { lang: string }) {
                       <p className="text-lg text-white/90 mb-2">{scooter.description}</p>
                       <p className="text-white/80 mb-6">{scooter.features}</p>
                       <div className="flex gap-4">
-                        {/* Updated button to an <a> tag for phone call functionality */}
-                        <a
-                          href="tel:+38268775468" // The phone number to call
-                          className="inline-block bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-105"
-                          aria-label="Call to rent this scooter" // Accessible label
+                        <button
+                          onClick={handleViberMessage}
+                          className="inline-flex items-center justify-center bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-105"
+                          aria-label="Send message via Viber to rent this scooter"
                         >
-                          {t.rentThis || "Rent This Scooter"}
-                        </a>
-                        {/* Keep the original Button component for "Learn More" if it's still imported */}
-                        {/* <Button
-                          variant="outline"
-                          className="border-white text-white hover:bg-white hover:text-gray-900 px-6 py-2 rounded-lg transition-all duration-300"
-                        >
-                          {t.learnMore || "Learn More"}
-                        </Button> */}
+                          <MessageCircle className="mr-2 h-4 w-4" />
+                          {t.rentNow || "Rent now via Viber"}
+                        </button>
                       </div>
                     </div>
                   </div>
