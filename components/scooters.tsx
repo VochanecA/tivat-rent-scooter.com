@@ -4,6 +4,8 @@ import { useRef, useEffect } from "react"
 import Image from "next/image"
 import { Star, Shield, MapPin, Calendar, MessageCircle } from "lucide-react"
 import { getTranslations } from "@/lib/i18n"
+import { CheckCircle, Gift } from "lucide-react"; // Import the icons you need
+import Link from "next/link";
 
 interface ScooterData {
   id: string
@@ -273,23 +275,30 @@ export default function Scooters({ lang }: { lang: string }) {
         </div>
 
         {/* Additional Info */}
-        <div className="max-w-4xl mx-auto mt-16 text-center">
-          <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-8">
-            <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">
-              {t.rentalInfo || "Rental Information"}
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-600 dark:text-gray-300">
-              <div>
-                <h4 className="font-semibold mb-2">{t.requirements || "Requirements"}</h4>
-                <p>{t.requirementsText}</p>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-2">{t.included || "Included"}</h4>
-                <p>{t.includedText}</p>
-              </div>
-            </div>
-          </div>
-        </div>
+<div className="max-w-4xl mx-auto mt-16">
+  <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 transform transition-transform hover:scale-105">
+    <h3 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">
+      {t.rentalInfo || "Rental Information"}
+    </h3>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg border-l-4 border-orange-500">
+        <h4 className="flex items-center font-semibold text-xl mb-3 text-gray-800 dark:text-gray-200">
+          <CheckCircle className="mr-2 h-5 w-5 text-orange-500" />
+          {t.requirements || "Requirements"}
+        </h4>
+        <p className="text-gray-600 dark:text-gray-300">{t.requirementsText}</p>
+      </div>
+      <div className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg border-l-4 border-pink-500">
+        <h4 className="flex items-center font-semibold text-xl mb-3 text-gray-800 dark:text-gray-200">
+          <Gift className="mr-2 h-5 w-5 text-pink-500" />
+          {t.included || "Included"}
+        </h4>
+        <p className="text-gray-600 dark:text-gray-300">{t.includedText}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
       </div>
 
       <style jsx>{`
