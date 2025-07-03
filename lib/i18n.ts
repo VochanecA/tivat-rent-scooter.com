@@ -31,6 +31,7 @@ type TranslationKey =
   | "readyToRide"
   | "readyToRideDescription"
   | "bookNow"
+  | "bookNowWhatsApp"
   | "stayConnected"
   | "scanQrCodes"
   | "instagram"
@@ -158,6 +159,7 @@ const translations: Record<string, Translations> = {
     readyToRide: "Ready to Ride?",
     readyToRideDescription: "Book your scooter now and start your Tivat adventure today!",
     bookNow: "Book Now via Viber",
+    bookNowWhatsApp: "Book Now via WhatsApp",
     stayConnected: "Stay Connected",
     scanQrCodes: "Scan our QR codes to follow us on social media and visit our website",
     instagram: "Instagram",
@@ -277,6 +279,7 @@ const translations: Record<string, Translations> = {
     readyToRide: "Spremni za vožnju?",
     readyToRideDescription: "Rezervišite svoj skuter sada i započnite svoju tivatsku avanturu danas!",
     bookNow: "Rezerviši odmah preko Vibera",
+    bookNowWhatsApp: "Rezerviši odmah preko WhatsApp-a",
     stayConnected: "Ostanite povezani",
     scanQrCodes: "Skenirajte naše QR kodove da nas pratite na društvenim mrežama i posetite našu web stranicu",
     instagram: "Instagram",
@@ -341,7 +344,7 @@ const translations: Record<string, Translations> = {
     nuancesLocalDrivingTitle: "Lokalni stil vožnje:",
     nuancesLocalDrivingText: "Lokalni vozači ponekad mogu biti asertivni. Budite oprezni, predvidite radnje i vozite defanzivno.",
     nuancesFuelStationsTitle: "Benzinske pumpe:",
-    nuancesFuelStationsText: "Benzinske pumpe su lako dostupne u gradovima i duž glavnih puteva. Preporučljivo je napuniti gorivo prije dugih putovanja, posebno kada idete u udaljena područja.",
+    nuancesFuelStationsText: "Benzinske pumpe su lako dostupne u gradovima i na glavnim putevima. Preporučljivo je napuniti gorivo prije dugih putovanja, posebno kada idete u udaljena područja.",
     nuancesBokaBayTitle: "Trajekti za Boku Kotorsku:",
     nuancesBokaBayText: "Razmislite o korišćenju trajekta Kamenari-Lepetane za prelazak Boke Kotorske, posebno tokom sezone, kako biste uštedjeli vrijeme i izbjegli gužve oko unutrašnjeg zaliva.",
     essentialsSectionTitle: "Osnovna oprema i dokumenta",
@@ -353,7 +356,7 @@ const translations: Record<string, Translations> = {
     essentialsMap: "Fizička karta ili offline GPS (mobilni signal može biti slab u nekim područjima)",
     essentialsSunscreen: "Krema za sunčanje (crnogorsko sunce je jako)",
     essentialsBackpack: "Mali ranac (za osnovne stvari)",
-    essentialsDocuments: "Sva dokumenta za najam i vaša vozačka dozvola",
+    essentialsDocuments: "Sva dokumenta o najmu i vaša vozačka dozvola",
     emergencySectionTitle: "U slučaju nužde",
     emergencyRoadsideTitle: "Pomoć na putu:",
     emergencyRoadsideText: "U slučaju kvara ili probušene gume, kontaktirajte naš broj za pomoć na putu 24/7 koji je naveden u vašem ugovoru o najmu. Ne pokušavajte sami da popravljate.",
@@ -363,7 +366,7 @@ const translations: Record<string, Translations> = {
     emergencyAccidentCallUs: "Odmah nas kontaktirajte i prijavite incident.",
     emergencyAccidentAdmitFault: "Ne priznajte krivicu niti razgovarajte o odgovornosti sa drugim stranama.",
     emergencyAccidentCollectInfo: "Sakupite informacije: fotografije mjesta događaja, kontakt podatke drugih strana i svjedoka, podatke o vozilu.",
-    emergencyAccidentWait: "Sačekajte dolazak policije i našeg tima.",
+    emergencyAccidentWait: "Sačekajte dolazak policije i naše ekipe.",
     enjoyRideConcludingText: "Nadamo se da će vam ovi savjeti poboljšati vašu skutersku avanturu u Crnoj Gori. Vozite sigurno i uživajte u pejzažu koji oduzima dah!"
   },
   ru: {
@@ -375,7 +378,7 @@ const translations: Record<string, Translations> = {
     selectLanguage: "Выберите язык",
     heroTitle: "Исследуйте Тиват и бухту Бока на двух колесах",
     heroSubtitle: "Ощутите свободу черногорского побережья с нашими премиальными скутерами напрокат",
-    rentNow: "Арендовать сейчас",
+    rentNow: "Арендовать сейчас через Viber",
     learnMore: "Узнать больше",
     ourScooters: "Наш флот скутеров",
     maxSpeed: "Макс. скорость",
@@ -396,6 +399,7 @@ const translations: Record<string, Translations> = {
     readyToRide: "Готовы к поездке?",
     readyToRideDescription: "Забронируйте свой скутер сейчас и начните свое приключение в Тивате сегодня!",
     bookNow: "Забронировать сейчас через Viber",
+    bookNowWhatsApp: "Забронировать сейчас через WhatsApp",
     stayConnected: "Оставайтесь на связи",
     scanQrCodes: "Отсканируйте наши QR-коды, чтобы следить за нами в социальных сетях и посетить наш веб-сайт",
     instagram: "Instagram",
@@ -494,7 +498,7 @@ const translations: Record<string, Translations> = {
     selectLanguage: "בחר שפה",
     heroTitle: "חקור את טיבט ומפרץ בוקה על שני גלגלים",
     heroSubtitle: "חווה את החופש של חוף מונטנגרו עם קטנועי הפרימיום שלנו להשכרה",
-    rentNow: "השכר עכשיו",
+    rentNow: "השכר עכשיו דרך וייבר",
     learnMore: "למידע נוסף",
     ourScooters: "צי הקטנועים שלנו",
     maxSpeed: "מהירות מקסימלית",
@@ -514,7 +518,8 @@ const translations: Record<string, Translations> = {
     feature5Description: "הצוות שלנו תמיד זמין לעזור בכל שאלה או סיוע שאתה עשוי להזדקק לו במהלך ההשכרה.",
     readyToRide: "מוכנים לרכוב?",
     readyToRideDescription: "הזמן את הקטנוע שלך עכשיו והתחל את הרפתקת טיבט שלך היום!",
-    bookNow:  "הזמן עכשיו דרך וייבר",
+    bookNow: "הזמן עכשיו דרך וייבר",
+    bookNowWhatsApp: "הזמן עכשיו דרך וואטסאפ",
     stayConnected: "הישאר מחובר",
     scanQrCodes: "סרקו את קודי ה-QR שלנו כדי לעקוב אחרינו ברשתות החברתיות ולבקר באתר שלנו",
     instagram: "אינסטגרם",
@@ -537,7 +542,7 @@ const translations: Record<string, Translations> = {
     tipsPageSubtitle: "עצות חיוניות לחוויית קטנוע בטוחה ומהנה בטיבט ומחוצה לה.",
     safetySectionTitle: "בטיחות קודם כל: רכבו בחוכמה, הישארו בטוחים",
     safetyHelmetTitle: "תמיד חבשו קסדה:",
-    safetyHelmetText: "זו חובה חוקית וקריטית לבטיחותכם. אנו מספקים קסדות עם כל השכירות.",
+    safetyHelmetText: "זו חובה חוקית וקריטית לבטיחותכם. אנו מספקים קסדות עם כל ההשכרות.",
     safetyCheckTitle: "בדיקה לפני רכיבה:",
     safetyCheckBrakes: "בדוק בלמים ואורות.",
     safetyCheckTires: "בדוק לחץ אוויר ומצב צמיגים.",
@@ -613,7 +618,7 @@ const translations: Record<string, Translations> = {
     selectLanguage: "Sélectionner la langue",
     heroTitle: "Explorez Tivat et la baie de Boka à deux roues",
     heroSubtitle: "Découvrez la liberté de la côte monténégrine avec nos scooters de location premium",
-    rentNow: "Louer maintenant",
+    rentNow: "Louer maintenant via Viber",
     learnMore: "En savoir plus",
     ourScooters: "Notre flotte de scooters",
     maxSpeed: "Vitesse max",
@@ -634,6 +639,7 @@ const translations: Record<string, Translations> = {
     readyToRide: "Prêt à rouler ?",
     readyToRideDescription: "Réservez votre scooter maintenant et commencez votre aventure à Tivat aujourd'hui !",
     bookNow: "Réserver maintenant via Viber",
+    bookNowWhatsApp: "Réserver maintenant via WhatsApp",
     stayConnected: "Restez connecté",
     scanQrCodes: "Scannez nos codes QR pour nous suivre sur les réseaux sociaux et visiter notre site web",
     instagram: "Instagram",
