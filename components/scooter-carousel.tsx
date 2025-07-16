@@ -28,13 +28,13 @@ const scooters = [
     description: "Sleek and sporty design with advanced features",
     features: "LED, Comfortable Seat, Top Box Storage, Windshield",
   },
-  {
-    id: 4,
-    name: "KOVE 500 cc / 2024 Manual",
-    image: "/scooters/scooter4.jpg",
-    description: "Rugged dual-sport for long-distance travel",
-    features: "Aluminum Luggage Boxes, Tall Windshield, Off-road Ready",
-  },
+  // {
+  //   id: 4,
+  //   name: "KOVE 500 cc / 2024 Manual",
+  //   image: "/scooters/scooter4.jpg",
+  //   description: "Rugged dual-sport for long-distance travel",
+  //   features: "Aluminum Luggage Boxes, Tall Windshield, Off-road Ready",
+  // },
 ]
 
 export default function ScooterCarousel({ lang }: { lang: string }) {

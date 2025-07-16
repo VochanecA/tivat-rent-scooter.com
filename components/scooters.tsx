@@ -61,19 +61,19 @@ const scootersData: ScooterData[] = [
     },
     features: ["Classic Italian style", "Instagram worthy", "Efficient", "Premium comfort","Comfortable seat", "Modern charm"]
   },
-  {
-    id: "sport-adventure",
-    name: "KOVE 500 cc/2024 Manual",
-    price: 65,
-    image: "/scooters/scooter4.jpg",
-    specs: {
-      rating: 4.8,
-      availability: "Available",
-      bestFor: "Eco tours",
-      duration: "Full day"
-    },
-    features: ["Manual transmission", "Efficient", "Cross", "Comfortable seat","Modern design"]
-  },
+  // {
+  //   id: "sport-adventure",
+  //   name: "KOVE 500 cc/2024 Manual",
+  //   price: 65,
+  //   image: "/scooters/scooter4.jpg",
+  //   specs: {
+  //     rating: 4.8,
+  //     availability: "Available",
+  //     bestFor: "Eco tours",
+  //     duration: "Full day"
+  //   },
+  //   features: ["Manual transmission", "Efficient", "Cross", "Comfortable seat","Modern design"]
+  // },
   {
     id: "classic-city-2020",
     name: "VERA CRUZ 125cc/2020",

@@ -18,7 +18,7 @@ export default function Hero({ lang }: { lang: string }) {
 
   // List of images in the public directory
   const slides = [
-    "/scooters/scooter4.jpg",
+    // "/scooters/scooter4.jpg",
     "/tivat11.jpg",
     "/scooters/scooter2.jpg",
     "/tivat3.jpg",
