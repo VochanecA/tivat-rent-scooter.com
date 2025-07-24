@@ -10,6 +10,7 @@ import Footer from "@/components/footer";
 import Testimonials from "@/components/Testimonials";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
+import { Toaster } from 'react-hot-toast';
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
@@ -119,6 +120,7 @@ export default function RootLayout({
             </div>
           </LanguageProvider>
         </ThemeProvider>
+        <Toaster position="top-right" />
       </body>
     </html>
   );

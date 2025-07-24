@@ -119,7 +119,26 @@ type TranslationKey =
   | "emergencyAccidentAdmitFault"
   | "emergencyAccidentCollectInfo"
   | "emergencyAccidentWait"
-  | "enjoyRideConcludingText";
+  | "enjoyRideConcludingText"
+  | "shareExperience"
+  | "cancelComment"
+  | "shareYourStory"
+  | "fullName"
+  | "enterName"
+  | "email"
+  | "enterEmail"
+  | "role"
+  | "enterRole"
+  | "testimonial"
+  | "testimonialsTitle"
+  | "testimonialsDescription"
+  | "shareExperienceText"
+  | "submitting"
+  | "submitTestimonial"
+  | "verificationNote"
+  | "verified"
+  | "testimonialSubmitted"
+  | "testimonialError";
 
 // Define the type for translations
 export type Translations = Record<TranslationKey, string>;
@@ -247,7 +266,26 @@ const translations: Record<string, Translations> = {
     emergencyAccidentAdmitFault: "Do not admit fault or discuss liability with other parties.",
     emergencyAccidentCollectInfo: "Collect information: photos of the scene, contact details of other parties and witnesses, vehicle details.",
     emergencyAccidentWait: "Wait for the police and our team to arrive.",
-    enjoyRideConcludingText: "We hope these tips enhance your scooter adventure in Montenegro. Ride safe and enjoy the breathtaking scenery!"
+    enjoyRideConcludingText: "We hope these tips enhance your scooter adventure in Montenegro. Ride safe and enjoy the breathtaking scenery!",
+ // ADD THESE TESTIMONIAL TRANSLATIONS:
+
+    shareExperience: "Share Your Experience",
+    cancelComment: "Cancel",
+    shareYourStory: "Share Your Story",
+    fullName: "Full Name",
+    enterName: "Enter your name", 
+    email: "Email",
+    enterEmail: "Enter your email",
+    role: "Role/Location",
+    enterRole: "e.g., Tourist from Belgrade",
+    testimonial: "Your Testimonial",
+    shareExperienceText: "Tell us about your experience with our scooter rental service...",
+    submitting: "Submitting...",
+    submitTestimonial: "Submit Testimonial", 
+    verificationNote: "Your testimonial will be published after email verification.",
+    verified: "Verified",
+    testimonialSubmitted: "Thank you! Please check your email to verify your testimonial.",
+    testimonialError: "Something went wrong. Please try again."
   },
   sr: {
     home: "Početna",
@@ -367,7 +405,24 @@ const translations: Record<string, Translations> = {
     emergencyAccidentAdmitFault: "Ne priznajte krivicu niti razgovarajte o odgovornosti sa drugim stranama.",
     emergencyAccidentCollectInfo: "Sakupite informacije: fotografije mjesta događaja, kontakt podatke drugih strana i svjedoka, podatke o vozilu.",
     emergencyAccidentWait: "Sačekajte dolazak policije i naše ekipe.",
-    enjoyRideConcludingText: "Nadamo se da će vam ovi savjeti poboljšati vašu skutersku avanturu u Crnoj Gori. Vozite sigurno i uživajte u pejzažu koji oduzima dah!"
+    enjoyRideConcludingText: "Nadamo se da će vam ovi savjeti poboljšati vašu skutersku avanturu u Crnoj Gori. Vozite sigurno i uživajte u pejzažu koji oduzima dah!",
+    shareExperience: "Podijelite svoje iskustvo",
+    cancelComment: "Otkaži",
+    shareYourStory: "Podijelite svoju priču",
+    fullName: "Puno ime",
+    enterName: "Unesite svoje ime",
+    email: "Email",
+    enterEmail: "Unesite svoju email adresu",
+    role: "Uloga/Lokacija",
+    enterRole: "npr., Turista iz Beograda",
+    testimonial: "Vaše svjedočanstvo",
+    shareExperienceText: "Recite nam o svom iskustvu sa našom uslugom iznajmljivanja skutera...",
+    submitting: "Slanje...",
+    submitTestimonial: "Pošalji svjedočanstvo",
+    verificationNote: "Vaše svjedočanstvo će biti objavljeno nakon verifikacije emaila.",
+    verified: "Verifikovano",
+    testimonialSubmitted: "Hvala! Molimo provjerite svoju email adresu da biste verifikovali svoje svjedočanstvo.",
+    testimonialError: "Nešto je pošlo po zlu. Molimo pokušajte ponovo."
   },
   ru: {
     home: "Главная",
@@ -487,7 +542,24 @@ const translations: Record<string, Translations> = {
     emergencyAccidentAdmitFault: "Не признавайте вину и не обсуждайте ответственность с другими сторонами.",
     emergencyAccidentCollectInfo: "Соберите информацию: фотографии места происшествия, контактные данные других сторон и свидетелей, данные автомобиля.",
     emergencyAccidentWait: "Дождитесь прибытия полиции и нашей команды.",
-    enjoyRideConcludingText: "Надеемся, эти советы сделают ваше приключение на скутере в Черногории еще лучше. Катайтесь безопасно и наслаждайтесь захватывающими дух пейзажами!"
+    enjoyRideConcludingText: "Надеемся, эти советы сделают ваше приключение на скутере в Черногории еще лучше. Катайтесь безопасно и наслаждайтесь захватывающими дух пейзажами!",
+    shareExperience: "Поделитесь своим опытом",
+    cancelComment: "Отмена",
+    shareYourStory: "Поделитесь своей историей",
+    fullName: "Полное имя",
+    enterName: "Введите ваше имя",
+    email: "Электронная почта",
+    enterEmail: "Введите ваш email",
+    role: "Роль/Местоположение",
+    enterRole: "например, Турист из Белграда",
+    testimonial: "Ваш отзыв",
+    shareExperienceText: "Расскажите нам о вашем опыте с нашей услугой аренды скутеров...",
+    submitting: "Отправка...",
+    submitTestimonial: "Отправить отзыв",
+    verificationNote: "Ваш отзыв будет опубликован после проверки email.",
+    verified: "Подтверждено",
+    testimonialSubmitted: "Спасибо! Пожалуйста, проверьте свою электронную почту, чтобы подтвердить ваш отзыв.",
+    testimonialError: "Что-то пошло не так. Пожалуйста, попробуйте снова."
   },
   he: {
     home: "בית",
@@ -607,7 +679,24 @@ const translations: Record<string, Translations> = {
     emergencyAccidentAdmitFault: "אל תודה באשמה או תדון באחריות עם צדדים אחרים.",
     emergencyAccidentCollectInfo: "אסוף מידע: תמונות מהזירה, פרטי קשר של צדדים אחרים ועדים, פרטי רכב.",
     emergencyAccidentWait: "המתן להגעת המשטרה והצוות שלנו.",
-    enjoyRideConcludingText: "אנו מקווים שטיפים אלו ישפרו את הרפתקת הקטנוע שלכם במונטנגרו. סעו בבטחה ותיהנו מהנוף עוצר הנשימה!"
+    enjoyRideConcludingText: "אנו מקווים שטיפים אלו ישפרו את הרפתקת הקטנוע שלכם במונטנגרו. סעו בבטחה ותיהנו מהנוף עוצר הנשימה!",
+    shareExperience: "שתף את החוויה שלך",
+    cancelComment: "ביטול",
+    shareYourStory: "שתף את הסיפור שלך",
+    fullName: "שם מלא",
+    enterName: "הכנס את שמך",
+    email: "אימייל",
+    enterEmail: "הכנס את האימייל שלך",
+    role: "תפקיד/מיקום",
+    enterRole: "למשל, תייר מבלגרד",
+    testimonial: "המחאה שלך",
+    shareExperienceText: "ספר לנו על החוויה שלך עם שירות השכרת הקטנועים שלנו...",
+    submitting: "שולח...",
+    submitTestimonial: "שלח המחאה",
+    verificationNote: "המחאה שלך תפורסם לאחר אימות האימייל.",
+    verified: "מאומת",
+    testimonialSubmitted: "תודה! אנא בדוק את האימייל שלך כדי לאמת את המחאה שלך.",
+    testimonialError: "משהו השתבש. אנא נסה שוב."
   },
   fr: {
     home: "Accueil",
@@ -727,8 +816,25 @@ const translations: Record<string, Translations> = {
     emergencyAccidentAdmitFault: "N'admettez pas de faute et ne discutez pas de responsabilité avec les autres parties.",
     emergencyAccidentCollectInfo: "Recueillez des informations : photos de la scène, coordonnées des autres parties et des témoins, détails du véhicule.",
     emergencyAccidentWait: "Attendez l'arrivée de la police et de notre équipe.",
-    enjoyRideConcludingText: "Nous espérons que ces conseils amélioreront votre aventure en scooter au Monténégro. Roulez en toute sécurité et profitez des paysages à couper le souffle !"
-  },
+    enjoyRideConcludingText: "Nous espérons que ces conseils amélioreront votre aventure en scooter au Monténégro. Roulez en toute sécurité et profitez des paysages à couper le souffle !",
+    shareExperience: "Partagez votre expérience",
+    cancelComment: "Annuler",
+    shareYourStory: "Partagez votre histoire",
+    fullName: "Nom complet",
+    enterName: "Entrez votre nom",
+    email: "Email",
+    enterEmail: "Entrez votre email",
+    role: "Rôle/Emplacement",
+    enterRole: "par exemple, Touriste de Belgrade",
+    testimonial: "Votre témoignage",
+    shareExperienceText: "Parlez-nous de votre expérience avec notre service de location de scooters...",
+    submitting: "Soumission...",
+    submitTestimonial: "Soumettre le témoignage",
+    verificationNote: "Votre témoignage sera publié après vérification de l'email.",
+    verified: "Vérifié",
+    testimonialSubmitted: "Merci ! Veuillez vérifier votre email pour vérifier votre témoignage.",
+    testimonialError: "Quelque chose a mal tourné. Veuillez réessayer."
+  }
 };
 
 // Function to get translations based on language
